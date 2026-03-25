@@ -21,7 +21,20 @@
       "Bash(git init:*)",
       "Bash(git remote:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"Add 20 new blog posts + SEO/AEO improvements:*)"
+      "Bash(git commit -m \"Add 20 new blog posts + SEO/AEO improvements:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo:*)",
+      "Bash(gh auth:*)",
+      "WebFetch(domain:www.painspecialist.blog)",
+      "WebSearch",
+      "Bash(pip3 install:*)",
+      "Bash(python3 /tmp/keyword_research.py)",
+      "Bash(git commit -m \"Add 6 high-value cost/price articles for SEO:*)",
+      "Bash(git commit -m \"Add semantic keyword internal linking to homepage + category pages:*)",
+      "Read(//Users/shreyasbagal/Downloads/painexclinic-main/**)",
+      "Bash(python3 /tmp/gen_sitemap.py)",
+      "Bash(git commit -m \"Perfect sitemap \\(160 URLs\\) + robots.txt \\(25 crawlers\\):*)",
+      "Bash(git commit:*)"
     ]
   }
 }
