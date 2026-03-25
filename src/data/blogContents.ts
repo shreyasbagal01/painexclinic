@@ -22,6 +22,7 @@ import { facialPainAeoContent } from "./content/facialPainAeoContent";
 import { heelPainAeoContent } from "./content/heelPainAeoContent";
 import { generalPainAeoContent } from "./content/generalPainAeoContent";
 import { newBlogsContent } from "./content/newBlogsContent";
+import { costArticlesContent } from "./content/costArticlesContent";
 
 // Legacy content (originally written inline)
 const legacyContent: Record<string, string> = {
@@ -268,4 +269,5 @@ export const blogContents: Record<string, string> = {
   ...heelPainAeoContent,
   ...generalPainAeoContent,
   ...newBlogsContent,
+  ...costArticlesContent,
 };
