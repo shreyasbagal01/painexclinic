@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth status)",
+      "Bash(git config user.name)",
+      "Bash(git config user.email)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{url_effective}\" https://www.painspecialist.blog/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code} | Final URL: %{url_effective}\" -L https://www.painspecialist.blog/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" https://www.painspecialist.blog/robots.txt)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" https://www.painspecialist.blog/sitemap.xml)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" https://www.painspecialist.blog/googlef740fa39a7796eeb.html)",
+      "Bash(curl -sI https://www.painspecialist.blog/)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm run:*)",
+      "Bash(npx vite:*)",
+      "Bash(npm install:*)",
+      "Bash(ls -d dist/blog/*/)",
+      "Bash(brew list:*)",
+      "Bash(npm list:*)",
+      "Bash(brew install:*)",
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"Add 20 new blog posts + SEO/AEO improvements:*)"
+    ]
+  }
+}

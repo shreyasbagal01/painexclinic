@@ -1,0 +1,1469 @@
+export interface BlogPost {
+  slug: string;
+  title: string;
+  metaDescription: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+  keywords: string[];
+}
+
+export const categories = [
+  { name: "All", slug: "all" },
+  { name: "Migraine & Headache", slug: "migraine" },
+  { name: "Back Pain", slug: "back-pain" },
+  { name: "Sciatica", slug: "sciatica" },
+  { name: "Neck Pain", slug: "neck-pain" },
+  { name: "Knee Pain", slug: "knee-pain" },
+  { name: "Shoulder Pain", slug: "shoulder-pain" },
+  { name: "Nerve Pain", slug: "nerve-pain" },
+  { name: "Facial Pain", slug: "facial-pain" },
+  { name: "Heel Pain", slug: "heel-pain" },
+  { name: "General Pain", slug: "general-pain" },
+];
+
+const d = (daysAgo: number) => {
+  const date = new Date();
+  date.setDate(date.getDate() - daysAgo);
+  return date.toISOString().split("T")[0];
+};
+
+export const blogPosts: BlogPost[] = [
+  // ─── MIGRAINE & HEADACHE (10) ───
+  {
+    slug: "migraine-vs-normal-headache-difference",
+    title: "Migraine vs Normal Headache – How to Tell the Difference",
+    metaDescription: "Learn the key differences between migraines and regular headaches. Find out when to seek migraine treatment in Pune from a specialist.",
+    excerpt: "Not all headaches are the same. Learn how to tell if your headache is actually a migraine, and what treatment options are available in Pune.",
+    category: "migraine",
+    date: d(1),
+    readTime: "6 min read",
+    keywords: ["migraine treatment Pune", "headache specialist Pune", "migraine symptoms", "migraine vs headache", "pain specialist in Pune", "best neurologist for migraine Pune", "migraine doctor near me"],
+  },
+  {
+    slug: "common-migraine-triggers-to-avoid",
+    title: "10 Common Migraine Triggers You Should Avoid",
+    metaDescription: "Discover the 10 most common migraine triggers and learn how to avoid them. Expert advice from a migraine specialist in Pune.",
+    excerpt: "Identifying your migraine triggers is the first step toward prevention. Here are 10 common triggers that patients in Pune frequently report.",
+    category: "migraine",
+    date: d(3),
+    readTime: "7 min read",
+    keywords: ["migraine triggers", "migraine prevention", "migraine specialist Pune", "what triggers migraine", "migraine food triggers", "stress migraine Pune", "how to prevent migraine attacks"],
+  },
+  {
+    slug: "when-see-pain-specialist-migraine-pune",
+    title: "When Should You See a Pain Specialist for Migraine in Pune?",
+    metaDescription: "Find out when it's time to consult a pain specialist for migraine treatment in Pune. Don't ignore these warning signs.",
+    excerpt: "Many patients in Pune suffer from migraines for years before seeing a specialist. Learn the signs that indicate it's time to seek expert help.",
+    category: "migraine",
+    date: d(5),
+    readTime: "6 min read",
+    keywords: ["pain specialist in Pune", "migraine treatment Pune", "headache specialist Pune", "when to see migraine doctor", "chronic migraine help Pune", "best migraine clinic Pune"],
+  },
+  {
+    slug: "early-warning-signs-migraine",
+    title: "Early Warning Signs of Migraine Most People Ignore",
+    metaDescription: "Many migraine warning signs go unnoticed. Learn to recognize early symptoms and seek timely treatment from a pain specialist in Pune.",
+    excerpt: "Migraines often send warning signs hours or even days before the headache hits. Recognizing these early signs can help you manage attacks better.",
+    category: "migraine",
+    date: d(7),
+    readTime: "5 min read",
+    keywords: ["migraine warning signs", "migraine symptoms", "pain specialist in Pune", "migraine aura symptoms", "early migraine signs", "prodrome migraine"],
+  },
+  {
+    slug: "best-treatment-chronic-migraine",
+    title: "Best Treatment Options for Chronic Migraine",
+    metaDescription: "Explore the best treatment options for chronic migraine including medications, Botox, and nerve blocks available at pain clinics in Pune.",
+    excerpt: "Chronic migraine affects your daily life. Discover modern treatment options including preventive medicines, Botox, and interventional procedures.",
+    category: "migraine",
+    date: d(9),
+    readTime: "8 min read",
+    keywords: ["chronic migraine treatment", "migraine treatment Pune", "best pain clinic Pune", "Botox for migraine Pune", "CGRP treatment migraine", "nerve block migraine", "migraine prevention medicine"],
+  },
+  {
+    slug: "why-migraines-keep-coming-back",
+    title: "Why Do Migraines Keep Coming Back?",
+    metaDescription: "Understand why your migraines recur and learn proven strategies to reduce frequency. Consult a migraine specialist in Pune.",
+    excerpt: "Recurring migraines can be frustrating. Learn the science behind why migraines return and what you can do to break the cycle.",
+    category: "migraine",
+    date: d(11),
+    readTime: "7 min read",
+    keywords: ["recurring migraine", "migraine treatment Pune", "headache specialist Pune", "why migraine comes again", "migraine frequency", "chronic migraine causes"],
+  },
+  {
+    slug: "stress-and-migraine-connection",
+    title: "Stress and Migraine – What Is the Connection?",
+    metaDescription: "Understand the link between stress and migraines. Learn practical tips to manage stress-related migraines from a pain specialist in Pune.",
+    excerpt: "Stress is one of the most common migraine triggers. Learn how stress affects your brain and practical ways to manage it.",
+    category: "migraine",
+    date: d(13),
+    readTime: "6 min read",
+    keywords: ["stress and migraine", "migraine triggers", "pain specialist in Pune", "stress headache treatment", "work stress migraine", "anxiety and migraine"],
+  },
+  {
+    slug: "home-remedies-migraine-relief",
+    title: "Home Remedies for Migraine Relief",
+    metaDescription: "Try these effective home remedies for migraine relief. Learn what works and when to see a headache specialist in Pune.",
+    excerpt: "While medical treatment is important, these home remedies can help manage mild migraine symptoms and complement your treatment plan.",
+    category: "migraine",
+    date: d(15),
+    readTime: "6 min read",
+    keywords: ["migraine relief", "home remedies migraine", "headache specialist Pune", "natural migraine treatment", "migraine relief without medicine", "migraine home cure"],
+  },
+  {
+    slug: "can-screen-time-trigger-migraine",
+    title: "Can Screen Time Trigger Migraine?",
+    metaDescription: "Learn how excessive screen time can trigger migraines and what you can do about it. Expert advice from a pain specialist in Pune.",
+    excerpt: "With increasing screen time, many people in Pune are experiencing more frequent migraines. Here's the science behind it and tips to reduce risk.",
+    category: "migraine",
+    date: d(17),
+    readTime: "5 min read",
+    keywords: ["screen time migraine", "migraine triggers", "pain specialist in Pune", "computer headache", "blue light migraine", "digital eye strain headache"],
+  },
+  {
+    slug: "how-pain-specialist-treats-severe-headache",
+    title: "How a Pain Specialist Treats Severe Headache",
+    metaDescription: "Discover how a pain specialist diagnoses and treats severe headaches using modern techniques. Find expert headache treatment in Pune.",
+    excerpt: "Severe headaches require specialized care. Learn the step-by-step approach a pain specialist takes to diagnose and treat your condition.",
+    category: "migraine",
+    date: d(19),
+    readTime: "7 min read",
+    keywords: ["severe headache treatment", "headache specialist Pune", "pain specialist in Pune", "headache treatment Pune", "cluster headache treatment", "headache doctor near me"],
+  },
+
+  // ─── BACK PAIN (10) ───
+  {
+    slug: "causes-chronic-back-pain-working-professionals",
+    title: "10 Causes of Chronic Back Pain in Working Professionals",
+    metaDescription: "Discover the top 10 causes of chronic back pain in working professionals and learn prevention tips from a back pain specialist in Pune.",
+    excerpt: "If you work long hours at a desk in Pune, your back pain might have a clear cause. Here are the 10 most common reasons professionals develop back pain.",
+    category: "back-pain",
+    date: d(2),
+    readTime: "8 min read",
+    keywords: ["chronic back pain", "back pain specialist Pune", "back pain causes", "back pain IT professionals", "lower back pain sitting", "desk job back pain"],
+  },
+  {
+    slug: "lower-back-pain-when-should-you-worry",
+    title: "Lower Back Pain – When Should You Worry?",
+    metaDescription: "Not all lower back pain is harmless. Learn the warning signs that indicate you should see a back pain specialist in Pune immediately.",
+    excerpt: "Most lower back pain resolves on its own, but certain symptoms require urgent attention. Learn when to worry and when to wait.",
+    category: "back-pain",
+    date: d(4),
+    readTime: "6 min read",
+    keywords: ["lower back pain", "back pain specialist Pune", "pain specialist in Pune", "lower back pain causes", "when to worry about back pain", "back pain red flags"],
+  },
+  {
+    slug: "sitting-too-long-why-back-hurts",
+    title: "Sitting Too Long? Why Your Back Hurts",
+    metaDescription: "Understand why prolonged sitting causes back pain and learn ergonomic tips. Expert advice from a back pain specialist in Pune.",
+    excerpt: "Sitting for hours at work is one of the biggest causes of back pain in Pune's IT professionals. Here's why it happens and what to do about it.",
+    category: "back-pain",
+    date: d(6),
+    readTime: "6 min read",
+    keywords: ["sitting back pain", "back pain specialist Pune", "ergonomic tips", "prolonged sitting back pain", "office back pain", "IT professional back pain Pune"],
+  },
+  {
+    slug: "non-surgical-treatment-back-pain",
+    title: "Non-Surgical Treatment for Back Pain",
+    metaDescription: "Explore effective non-surgical treatments for back pain available at pain clinics in Pune. No surgery needed for most back pain cases.",
+    excerpt: "Surgery isn't always the answer for back pain. Discover effective non-surgical treatments that pain specialists in Pune recommend.",
+    category: "back-pain",
+    date: d(8),
+    readTime: "7 min read",
+    keywords: ["non-surgical back pain treatment", "best pain clinic Pune", "back pain specialist Pune", "back pain without surgery", "epidural injection Pune", "nerve block back pain"],
+  },
+  {
+    slug: "back-pain-vs-slip-disc-difference",
+    title: "Back Pain vs Slip Disc – What's the Difference?",
+    metaDescription: "Learn how to distinguish normal back pain from a slip disc. Find expert diagnosis from a back pain specialist in Pune.",
+    excerpt: "Not all back pain means you have a slip disc. Learn the key differences and when you should get an MRI or consult a specialist.",
+    category: "back-pain",
+    date: d(10),
+    readTime: "7 min read",
+    keywords: ["slip disc", "back pain specialist Pune", "back pain vs slip disc", "herniated disc treatment Pune", "slip disc symptoms", "MRI for back pain"],
+  },
+  {
+    slug: "exercises-reduce-back-pain",
+    title: "Exercises That Help Reduce Back Pain",
+    metaDescription: "Try these safe and effective exercises to reduce back pain. Recommended by back pain specialists in Pune for lasting relief.",
+    excerpt: "Regular exercise is one of the best ways to manage back pain. Here are safe exercises recommended by pain specialists that you can do at home.",
+    category: "back-pain",
+    date: d(12),
+    readTime: "6 min read",
+    keywords: ["back pain exercises", "back pain relief", "back pain specialist Pune", "exercises for lower back pain", "core strengthening back pain", "stretches for back pain"],
+  },
+  {
+    slug: "how-poor-posture-causes-back-pain",
+    title: "How Poor Posture Causes Back Pain",
+    metaDescription: "Understand the connection between poor posture and back pain. Learn correction techniques from a back pain specialist in Pune.",
+    excerpt: "Your posture could be the hidden cause of your back pain. Learn how posture affects your spine and simple ways to correct it.",
+    category: "back-pain",
+    date: d(14),
+    readTime: "6 min read",
+    keywords: ["poor posture back pain", "back pain causes", "back pain specialist Pune", "posture correction Pune", "slouching back pain", "desk posture back pain"],
+  },
+  {
+    slug: "when-visit-pain-specialist-back-pain-pune",
+    title: "When Should You Visit a Pain Specialist for Back Pain in Pune?",
+    metaDescription: "Know the right time to see a pain specialist for back pain in Pune. Don't let back pain become chronic – seek help early.",
+    excerpt: "Many people delay seeing a specialist for back pain. Learn the signs that it's time to consult a back pain specialist in Pune.",
+    category: "back-pain",
+    date: d(16),
+    readTime: "6 min read",
+    keywords: ["pain specialist in Pune", "back pain specialist Pune", "chronic back pain", "when to see back pain doctor", "back pain not going away"],
+  },
+  {
+    slug: "back-pain-increasing-young-adults",
+    title: "Why Back Pain Is Increasing in Young Adults",
+    metaDescription: "Back pain is no longer just an older person's problem. Learn why young adults in Pune are experiencing more back pain than ever.",
+    excerpt: "More young adults in Pune are suffering from back pain than ever before. Sedentary lifestyles, stress, and poor ergonomics are key factors.",
+    category: "back-pain",
+    date: d(18),
+    readTime: "6 min read",
+    keywords: ["back pain young adults", "back pain causes", "back pain specialist Pune", "back pain in 20s", "early back pain", "millennial back pain"],
+  },
+  {
+    slug: "how-stress-triggers-back-pain",
+    title: "How Stress Can Trigger Back Pain",
+    metaDescription: "Discover the surprising link between stress and back pain. Learn management techniques from a pain specialist in Pune.",
+    excerpt: "Stress doesn't just affect your mind – it can cause real physical back pain. Learn how the stress-pain cycle works and how to break it.",
+    category: "back-pain",
+    date: d(20),
+    readTime: "6 min read",
+    keywords: ["stress back pain", "chronic back pain", "pain specialist in Pune", "psychosomatic back pain", "tension back pain", "anxiety back pain"],
+  },
+
+  // ─── SCIATICA (7) ───
+  {
+    slug: "sciatica-pain-symptoms-not-ignore",
+    title: "Sciatica Pain – Symptoms You Should Not Ignore",
+    metaDescription: "Learn the key symptoms of sciatica pain that require medical attention. Find expert sciatica treatment from a pain specialist in Pune.",
+    excerpt: "Sciatica causes shooting pain from your lower back down your leg. These are the symptoms you should never ignore.",
+    category: "sciatica",
+    date: d(2),
+    readTime: "6 min read",
+    keywords: ["sciatica symptoms", "sciatica treatment", "pain specialist in Pune", "sciatica leg pain", "sciatic nerve pain", "sciatica doctor Pune"],
+  },
+  {
+    slug: "what-causes-sciatica-pain",
+    title: "What Causes Sciatica Pain?",
+    metaDescription: "Understand the common causes of sciatica pain including disc herniation and spinal stenosis. Expert insights from a pain specialist in Pune.",
+    excerpt: "Sciatica can be caused by several conditions. Understanding the root cause is key to getting the right treatment.",
+    category: "sciatica",
+    date: d(5),
+    readTime: "7 min read",
+    keywords: ["sciatica causes", "sciatica pain", "pain specialist in Pune", "herniated disc sciatica", "piriformis syndrome", "sciatica nerve compression"],
+  },
+  {
+    slug: "sciatica-vs-normal-leg-pain",
+    title: "Sciatica vs Normal Leg Pain – How to Tell the Difference",
+    metaDescription: "Learn to distinguish sciatica from regular leg pain. Find accurate diagnosis from a pain specialist in Pune.",
+    excerpt: "Not all leg pain is sciatica. Learn the key differences that help you identify whether your pain is nerve-related or muscular.",
+    category: "sciatica",
+    date: d(8),
+    readTime: "6 min read",
+    keywords: ["sciatica vs leg pain", "nerve pain", "pain specialist in Pune", "is my leg pain sciatica", "leg pain causes", "shooting leg pain"],
+  },
+  {
+    slug: "best-non-surgical-treatment-sciatica",
+    title: "Best Non-Surgical Treatment for Sciatica",
+    metaDescription: "Explore effective non-surgical sciatica treatments available at pain clinics in Pune. Most patients recover without surgery.",
+    excerpt: "Most sciatica cases can be treated without surgery. Discover the non-surgical options that pain specialists in Pune recommend.",
+    category: "sciatica",
+    date: d(11),
+    readTime: "8 min read",
+    keywords: ["non-surgical sciatica treatment", "sciatica treatment", "best pain clinic Pune", "epidural injection sciatica", "sciatica without surgery", "sciatica physiotherapy"],
+  },
+  {
+    slug: "exercises-help-sciatica-pain",
+    title: "Exercises That Help Sciatica Pain",
+    metaDescription: "Try these safe exercises to relieve sciatica pain. Recommended by pain specialists in Pune for home-based relief.",
+    excerpt: "Gentle exercises can help relieve sciatica pain and prevent recurrence. Here are specialist-recommended exercises you can do at home.",
+    category: "sciatica",
+    date: d(14),
+    readTime: "6 min read",
+    keywords: ["sciatica exercises", "sciatica relief", "pain specialist in Pune", "stretches for sciatica", "sciatica home exercises", "piriformis stretch"],
+  },
+  {
+    slug: "how-long-does-sciatica-pain-last",
+    title: "How Long Does Sciatica Pain Last?",
+    metaDescription: "Find out how long sciatica typically lasts and what factors affect recovery time. Expert guidance from a pain specialist in Pune.",
+    excerpt: "Sciatica duration varies from person to person. Learn what affects recovery time and when you should seek professional help.",
+    category: "sciatica",
+    date: d(17),
+    readTime: "5 min read",
+    keywords: ["sciatica duration", "sciatica recovery", "pain specialist in Pune", "how long sciatica lasts", "sciatica recovery time", "sciatica healing"],
+  },
+  {
+    slug: "when-see-pain-specialist-sciatica",
+    title: "When to See a Pain Specialist for Sciatica",
+    metaDescription: "Know when sciatica requires specialist treatment. Don't delay – consult a pain specialist in Pune for proper evaluation.",
+    excerpt: "While mild sciatica may resolve on its own, certain symptoms demand specialist attention. Know when it's time to seek help.",
+    category: "sciatica",
+    date: d(20),
+    readTime: "6 min read",
+    keywords: ["sciatica specialist", "pain specialist in Pune", "sciatica treatment", "sciatica doctor near me", "sciatica not improving", "severe sciatica treatment"],
+  },
+
+  // ─── NECK PAIN / CERVICAL SPONDYLOSIS (7) ───
+  {
+    slug: "neck-pain-mobile-usage-tech-neck",
+    title: "Neck Pain from Mobile Usage – Tech Neck Explained",
+    metaDescription: "Discover how excessive mobile phone use causes neck pain and learn prevention tips. Consult a neck pain specialist in Pune.",
+    excerpt: "Tech neck is becoming an epidemic in Pune. If you spend hours on your phone, your neck pain might be directly related.",
+    category: "neck-pain",
+    date: d(1),
+    readTime: "6 min read",
+    keywords: ["tech neck", "neck pain treatment Pune", "neck pain mobile", "smartphone neck pain", "forward head posture", "text neck syndrome"],
+  },
+  {
+    slug: "cervical-spondylosis-symptoms-treatment",
+    title: "Cervical Spondylosis – Symptoms and Treatment",
+    metaDescription: "Learn about cervical spondylosis symptoms and effective treatment options available from neck pain specialists in Pune.",
+    excerpt: "Cervical spondylosis is a common age-related condition affecting the neck. Learn its symptoms and modern treatment options.",
+    category: "neck-pain",
+    date: d(4),
+    readTime: "8 min read",
+    keywords: ["cervical spondylosis", "neck pain treatment Pune", "pain specialist in Pune", "cervical spondylosis symptoms", "neck stiffness treatment", "cervical disc problem"],
+  },
+  {
+    slug: "neck-pain-increasing-it-professionals",
+    title: "Why Neck Pain Is Increasing in IT Professionals",
+    metaDescription: "IT professionals in Pune are experiencing more neck pain. Learn the causes and prevention tips from a neck pain specialist.",
+    excerpt: "Long hours at the computer are taking a toll on IT professionals in Pune. Here's why neck pain is becoming so common in the tech industry.",
+    category: "neck-pain",
+    date: d(7),
+    readTime: "6 min read",
+    keywords: ["neck pain IT professionals", "neck pain treatment Pune", "ergonomic tips", "computer neck pain", "office neck pain", "programmer neck pain"],
+  },
+  {
+    slug: "exercises-neck-pain-relief",
+    title: "Exercises for Neck Pain Relief",
+    metaDescription: "Try these safe and effective exercises for neck pain relief. Recommended by neck pain specialists in Pune.",
+    excerpt: "Simple neck exercises can provide significant relief. Here are specialist-approved exercises you can do at your desk or at home.",
+    category: "neck-pain",
+    date: d(10),
+    readTime: "5 min read",
+    keywords: ["neck pain exercises", "neck pain relief", "neck pain treatment Pune", "neck stretches", "exercises for stiff neck", "neck pain at home remedies"],
+  },
+  {
+    slug: "when-see-doctor-neck-pain",
+    title: "When Should You See a Doctor for Neck Pain?",
+    metaDescription: "Learn when neck pain requires medical attention. Consult a neck pain specialist in Pune for proper diagnosis and treatment.",
+    excerpt: "Most neck pain resolves on its own, but some symptoms indicate a serious condition. Know when to see a specialist.",
+    category: "neck-pain",
+    date: d(13),
+    readTime: "6 min read",
+    keywords: ["neck pain doctor", "neck pain treatment Pune", "pain specialist in Pune", "severe neck pain", "when to worry about neck pain", "neck pain specialist near me"],
+  },
+  {
+    slug: "neck-pain-causes-headache",
+    title: "Neck Pain That Causes Headache – What It Means",
+    metaDescription: "Understand why neck pain can trigger headaches and how cervicogenic headaches are treated by a pain specialist in Pune.",
+    excerpt: "If your headache seems to start from your neck, you may have a cervicogenic headache. Learn what it means and how it's treated.",
+    category: "neck-pain",
+    date: d(16),
+    readTime: "6 min read",
+    keywords: ["cervicogenic headache", "neck pain headache", "headache specialist Pune", "headache from neck", "neck related headache treatment", "occipital headache"],
+  },
+  {
+    slug: "best-treatment-chronic-neck-pain",
+    title: "Best Treatment for Chronic Neck Pain",
+    metaDescription: "Explore the best treatment options for chronic neck pain available at pain clinics in Pune. From physiotherapy to nerve blocks.",
+    excerpt: "Chronic neck pain needs more than just painkillers. Discover effective treatments offered by pain specialists in Pune.",
+    category: "neck-pain",
+    date: d(19),
+    readTime: "7 min read",
+    keywords: ["chronic neck pain treatment", "neck pain treatment Pune", "best pain clinic Pune", "neck pain nerve block", "cervical radiofrequency", "neck pain injection"],
+  },
+
+  // ─── KNEE PAIN / OSTEOARTHRITIS (7) ───
+  {
+    slug: "knee-pain-climbing-stairs-causes-treatment",
+    title: "Knee Pain While Climbing Stairs – Causes and Treatment",
+    metaDescription: "Find out why your knees hurt while climbing stairs and explore treatment options from a pain specialist in Pune.",
+    excerpt: "Knee pain on stairs is one of the earliest signs of knee problems. Learn what causes it and when to seek treatment.",
+    category: "knee-pain",
+    date: d(1),
+    readTime: "6 min read",
+    keywords: ["knee pain stairs", "knee pain treatment", "pain specialist in Pune", "knee pain climbing", "knee pain going upstairs", "patellofemoral pain"],
+  },
+  {
+    slug: "early-signs-knee-osteoarthritis",
+    title: "Early Signs of Knee Osteoarthritis",
+    metaDescription: "Recognize the early signs of knee osteoarthritis and seek timely treatment from a pain specialist in Pune.",
+    excerpt: "Catching osteoarthritis early can slow its progression. Learn the subtle signs that your knees may be showing wear and tear.",
+    category: "knee-pain",
+    date: d(4),
+    readTime: "6 min read",
+    keywords: ["knee osteoarthritis", "knee pain early signs", "pain specialist in Pune", "OA knee symptoms", "knee cartilage damage", "knee joint wear and tear"],
+  },
+  {
+    slug: "knee-pain-without-injury",
+    title: "Why Knee Pain Happens Even Without Injury",
+    metaDescription: "Knee pain without injury is common. Learn the hidden causes and find treatment from a pain specialist in Pune.",
+    excerpt: "You don't need an injury to develop knee pain. Weight, posture, and underlying conditions can all contribute.",
+    category: "knee-pain",
+    date: d(7),
+    readTime: "6 min read",
+    keywords: ["knee pain without injury", "knee pain causes", "pain specialist in Pune", "unexplained knee pain", "knee pain from weight", "knee pain no trauma"],
+  },
+  {
+    slug: "non-surgical-treatment-knee-pain",
+    title: "Non-Surgical Treatment for Knee Pain",
+    metaDescription: "Explore non-surgical knee pain treatments including injections, physiotherapy, and PRP therapy available in Pune.",
+    excerpt: "Many knee pain conditions can be treated without surgery. Learn about modern non-surgical options available at pain clinics in Pune.",
+    category: "knee-pain",
+    date: d(10),
+    readTime: "7 min read",
+    keywords: ["non-surgical knee treatment", "knee pain treatment", "best pain clinic Pune", "PRP therapy knee Pune", "knee injection treatment", "knee pain without surgery"],
+  },
+  {
+    slug: "exercises-knee-pain-relief",
+    title: "Exercises That Help Knee Pain Relief",
+    metaDescription: "Try these safe exercises for knee pain relief recommended by pain specialists in Pune. Strengthen and protect your knees.",
+    excerpt: "Strengthening the muscles around your knees can reduce pain and prevent further damage. Here are safe exercises to try.",
+    category: "knee-pain",
+    date: d(13),
+    readTime: "5 min read",
+    keywords: ["knee pain exercises", "knee pain relief", "pain specialist in Pune", "exercises for knee arthritis", "knee strengthening", "quad exercises knee pain"],
+  },
+  {
+    slug: "when-visit-pain-specialist-knee-pain",
+    title: "When Should You Visit a Pain Specialist for Knee Pain?",
+    metaDescription: "Know when knee pain needs specialist attention. Consult a pain specialist in Pune for proper diagnosis and treatment.",
+    excerpt: "Don't let knee pain limit your life. Learn the signs that indicate it's time to see a knee pain specialist in Pune.",
+    category: "knee-pain",
+    date: d(16),
+    readTime: "6 min read",
+    keywords: ["knee pain specialist", "pain specialist in Pune", "knee pain treatment", "knee doctor Pune", "knee pain not going away", "chronic knee pain help"],
+  },
+  {
+    slug: "knee-pain-young-adults-causes",
+    title: "Knee Pain in Young Adults – Causes",
+    metaDescription: "Knee pain in young adults is rising. Learn the causes including sports injuries, weight, and lifestyle from a specialist in Pune.",
+    excerpt: "Knee pain isn't just for older people. Young adults in Pune are increasingly affected. Learn why and what to do about it.",
+    category: "knee-pain",
+    date: d(19),
+    readTime: "6 min read",
+    keywords: ["knee pain young adults", "knee pain causes", "pain specialist in Pune", "knee pain in 30s", "sports knee injury", "runner's knee Pune"],
+  },
+
+  // ─── KNEE PAIN AEO (4) ───
+  {
+    slug: "how-to-relieve-knee-pain-home-remedies",
+    title: "How to Relieve Knee Pain – Home Remedies and Expert Tips",
+    metaDescription: "Learn how to relieve knee pain at home with proven remedies, exercises, oils, and diet tips. Expert advice from a pain specialist in Pune.",
+    excerpt: "From ice vs heat to vitamins and oils, here's everything that actually works for knee pain relief at home — and when you need more.",
+    category: "knee-pain",
+    date: d(22),
+    readTime: "8 min read",
+    keywords: ["how to relieve knee pain", "knee pain home remedies", "what oil is good for knee pain", "vitamins for knee pain", "should I walk if my knees hurt", "ice or heat for knee pain", "knee pain relief Pune"],
+  },
+  {
+    slug: "what-causes-knee-pain-common-reasons",
+    title: "What Causes Knee Pain? Common and Surprising Reasons",
+    metaDescription: "Discover common and surprising causes of knee pain including vitamin deficiency, uric acid, and red flags. Expert guide from a pain specialist in Pune.",
+    excerpt: "Knee pain isn't always from injury. Vitamin deficiency, uric acid, autoimmune conditions, and weight can all play a role.",
+    category: "knee-pain",
+    date: d(24),
+    readTime: "7 min read",
+    keywords: ["what causes knee pain", "can vitamin deficiency cause knee pain", "is knee pain due to uric acid", "knee pain red flags", "what diseases start with knee pain", "how to prevent knee pain", "knee pain specialist Pune"],
+  },
+  {
+    slug: "best-knee-pain-treatment-options",
+    title: "Best Treatment for Knee Pain – From Home Care to Advanced Options",
+    metaDescription: "Explore the best knee pain treatments from exercises and diet to PRP, injections, and the latest procedures. Expert guide from a pain specialist in Pune.",
+    excerpt: "What's the best treatment for your knee pain? From simple exercises to advanced procedures like genicular nerve ablation — a complete guide.",
+    category: "knee-pain",
+    date: d(26),
+    readTime: "8 min read",
+    keywords: ["best treatment for knee pain", "best exercise for knee pain", "latest treatment knee pain", "which food is not good for knee pain", "PRP for knee pain Pune", "knee pain treatment options", "knee pain specialist Pune"],
+  },
+  {
+    slug: "walking-with-knee-pain-complete-guide",
+    title: "Walking with Knee Pain – Is It Safe? A Complete Guide",
+    metaDescription: "Should you walk with knee pain? Learn if walking helps or hurts, how to walk correctly, and common mistakes. Expert advice from a pain specialist in Pune.",
+    excerpt: "Should you walk or rest? Is walking good for cartilage? What's the biggest mistake for bad knees? Answers to every walking-and-knee-pain question.",
+    category: "knee-pain",
+    date: d(28),
+    readTime: "9 min read",
+    keywords: ["walking with knee pain", "is walking good for knee cartilage", "should I walk if my knees hurt", "how to walk to reduce knee pain", "is heat or ice better for knee pain", "signs of arthritis", "knee pain specialist Pune"],
+  },
+
+  // ─── SHOULDER PAIN / FROZEN SHOULDER (6) ───
+  {
+    slug: "frozen-shoulder-symptoms-causes-treatment",
+    title: "Frozen Shoulder – Symptoms, Causes and Treatment",
+    metaDescription: "Complete guide to frozen shoulder including symptoms, causes, and treatment options from a pain specialist in Pune.",
+    excerpt: "Frozen shoulder causes stiffness and pain that worsens over time. Learn the symptoms, stages, and effective treatment options.",
+    category: "shoulder-pain",
+    date: d(2),
+    readTime: "8 min read",
+    keywords: ["frozen shoulder", "shoulder pain treatment", "pain specialist in Pune", "adhesive capsulitis", "frozen shoulder stages", "shoulder stiffness treatment Pune"],
+  },
+  {
+    slug: "shoulder-pain-worse-at-night",
+    title: "Why Shoulder Pain Is Worse at Night",
+    metaDescription: "Understand why shoulder pain intensifies at night and what you can do about it. Expert advice from a pain specialist in Pune.",
+    excerpt: "If your shoulder pain keeps you up at night, there's a reason. Learn why nighttime shoulder pain happens and how to manage it.",
+    category: "shoulder-pain",
+    date: d(5),
+    readTime: "6 min read",
+    keywords: ["shoulder pain at night", "shoulder pain causes", "pain specialist in Pune", "nighttime shoulder pain", "shoulder pain sleeping", "rotator cuff pain night"],
+  },
+  {
+    slug: "early-signs-frozen-shoulder",
+    title: "Early Signs of Frozen Shoulder",
+    metaDescription: "Recognize the early signs of frozen shoulder before it limits your movement. Seek timely treatment from a specialist in Pune.",
+    excerpt: "Frozen shoulder develops gradually. Catching it early can significantly improve your treatment outcome and recovery time.",
+    category: "shoulder-pain",
+    date: d(8),
+    readTime: "5 min read",
+    keywords: ["frozen shoulder early signs", "shoulder pain", "pain specialist in Pune", "shoulder stiffness early", "frozen shoulder diagnosis", "can't raise arm"],
+  },
+  {
+    slug: "exercises-shoulder-pain-relief",
+    title: "Exercises for Shoulder Pain Relief",
+    metaDescription: "Try these gentle exercises for shoulder pain relief. Recommended by shoulder pain specialists in Pune.",
+    excerpt: "Regular gentle exercises can help manage shoulder pain and improve mobility. Here are specialist-approved exercises for relief.",
+    category: "shoulder-pain",
+    date: d(11),
+    readTime: "5 min read",
+    keywords: ["shoulder pain exercises", "shoulder pain relief", "pain specialist in Pune", "frozen shoulder exercises", "shoulder stretches", "shoulder mobility exercises"],
+  },
+  {
+    slug: "when-see-doctor-shoulder-pain",
+    title: "When Should You See a Doctor for Shoulder Pain?",
+    metaDescription: "Learn when shoulder pain requires medical attention. Consult a pain specialist in Pune for proper evaluation and treatment.",
+    excerpt: "Some shoulder pain resolves on its own, but certain symptoms need professional care. Know when to seek help.",
+    category: "shoulder-pain",
+    date: d(14),
+    readTime: "6 min read",
+    keywords: ["shoulder pain doctor", "shoulder pain treatment", "pain specialist in Pune", "shoulder specialist Pune", "shoulder pain not improving", "rotator cuff doctor"],
+  },
+  {
+    slug: "best-treatment-frozen-shoulder",
+    title: "Best Treatment for Frozen Shoulder",
+    metaDescription: "Explore the best treatment options for frozen shoulder available at pain clinics in Pune including injections and physiotherapy.",
+    excerpt: "Frozen shoulder treatment has advanced significantly. Learn about the most effective treatments offered by specialists in Pune.",
+    category: "shoulder-pain",
+    date: d(17),
+    readTime: "7 min read",
+    keywords: ["frozen shoulder treatment", "best pain clinic Pune", "pain specialist in Pune", "shoulder injection treatment", "hydrodilatation shoulder", "frozen shoulder cure"],
+  },
+
+  // ─── NERVE PAIN DISORDERS (6) ───
+  {
+    slug: "what-does-nerve-pain-feel-like",
+    title: "What Does Nerve Pain Feel Like?",
+    metaDescription: "Learn how to identify nerve pain symptoms including burning, tingling, and shooting sensations. Expert guide from a pain specialist in Pune.",
+    excerpt: "Nerve pain feels different from regular pain. Learn to identify the unique sensations that indicate nerve involvement.",
+    category: "nerve-pain",
+    date: d(1),
+    readTime: "6 min read",
+    keywords: ["nerve pain symptoms", "nerve pain treatment Pune", "pain specialist in Pune", "neuropathic pain", "burning pain", "tingling sensation causes"],
+  },
+  {
+    slug: "nerve-pain-vs-muscle-pain-differences",
+    title: "Nerve Pain vs Muscle Pain – Key Differences",
+    metaDescription: "Learn to distinguish nerve pain from muscle pain. Find accurate diagnosis from a pain specialist in Pune.",
+    excerpt: "Understanding whether your pain is nerve-related or muscular is crucial for getting the right treatment. Here's how to tell the difference.",
+    category: "nerve-pain",
+    date: d(4),
+    readTime: "6 min read",
+    keywords: ["nerve pain vs muscle pain", "nerve pain", "pain specialist in Pune", "how to tell nerve pain", "neuropathy vs myalgia", "sharp vs dull pain"],
+  },
+  {
+    slug: "burning-sensation-legs-nerve-damage",
+    title: "Burning Sensation in Legs – Is It Nerve Damage?",
+    metaDescription: "A burning feeling in your legs could indicate nerve damage. Learn the causes and find treatment from a nerve pain specialist in Pune.",
+    excerpt: "A burning sensation in your legs is often a sign of nerve involvement. Learn what causes it and when you should see a specialist.",
+    category: "nerve-pain",
+    date: d(7),
+    readTime: "6 min read",
+    keywords: ["burning legs", "nerve damage", "nerve pain treatment Pune", "burning sensation legs", "peripheral neuropathy", "diabetic nerve pain legs"],
+  },
+  {
+    slug: "causes-chronic-nerve-pain",
+    title: "Causes of Chronic Nerve Pain",
+    metaDescription: "Understand the common causes of chronic nerve pain including diabetes, injury, and disc problems. Expert insights from a pain specialist in Pune.",
+    excerpt: "Chronic nerve pain can stem from various conditions. Understanding the cause is the first step toward effective treatment.",
+    category: "nerve-pain",
+    date: d(10),
+    readTime: "7 min read",
+    keywords: ["chronic nerve pain causes", "nerve pain treatment Pune", "chronic pain doctor Pune", "neuropathy causes", "nerve damage causes", "post-surgical nerve pain"],
+  },
+  {
+    slug: "when-see-pain-specialist-nerve-pain",
+    title: "When Should You See a Pain Specialist for Nerve Pain?",
+    metaDescription: "Know when nerve pain needs specialist treatment. Consult a nerve pain specialist in Pune for proper diagnosis and management.",
+    excerpt: "Nerve pain that persists or worsens needs professional evaluation. Learn the signs that indicate it's time to see a specialist.",
+    category: "nerve-pain",
+    date: d(13),
+    readTime: "6 min read",
+    keywords: ["nerve pain specialist", "pain specialist in Pune", "nerve pain treatment Pune", "neuropathy doctor Pune", "nerve pain not improving", "when to see neurologist"],
+  },
+  {
+    slug: "treatments-available-nerve-pain",
+    title: "Treatments Available for Nerve Pain",
+    metaDescription: "Explore modern nerve pain treatments including medications, nerve blocks, and neuromodulation available at pain clinics in Pune.",
+    excerpt: "From medications to advanced interventional procedures, discover the range of treatments available for nerve pain in Pune.",
+    category: "nerve-pain",
+    date: d(16),
+    readTime: "8 min read",
+    keywords: ["nerve pain treatment", "nerve pain treatment Pune", "best pain clinic Pune", "nerve block treatment", "neuromodulation", "radiofrequency ablation nerve"],
+  },
+
+  // ─── FACIAL PAIN / TRIGEMINAL NEURALGIA (4) ───
+  {
+    slug: "trigeminal-neuralgia-most-painful-facial-condition",
+    title: "Trigeminal Neuralgia – The Most Painful Facial Condition",
+    metaDescription: "Learn about trigeminal neuralgia, one of the most painful conditions known. Find expert treatment from a pain specialist in Pune.",
+    excerpt: "Trigeminal neuralgia causes sudden, severe facial pain that can be debilitating. Learn about this condition and treatment options.",
+    category: "facial-pain",
+    date: d(3),
+    readTime: "8 min read",
+    keywords: ["trigeminal neuralgia", "facial pain", "pain specialist in Pune", "trigeminal neuralgia Pune", "worst facial pain", "electric shock face pain"],
+  },
+  {
+    slug: "electric-shock-facial-pain-causes",
+    title: "Electric Shock-Like Facial Pain – Causes",
+    metaDescription: "Experiencing electric shock-like pain in your face? Learn the possible causes and find treatment from a pain specialist in Pune.",
+    excerpt: "Sharp, electric shock-like facial pain is a hallmark of certain nerve conditions. Learn what causes this intense sensation.",
+    category: "facial-pain",
+    date: d(8),
+    readTime: "6 min read",
+    keywords: ["facial pain causes", "electric shock facial pain", "pain specialist in Pune", "sharp face pain", "jaw pain causes", "trigeminal nerve"],
+  },
+  {
+    slug: "treatment-options-trigeminal-neuralgia",
+    title: "Treatment Options for Trigeminal Neuralgia",
+    metaDescription: "Explore effective treatments for trigeminal neuralgia from medications to interventional procedures available in Pune.",
+    excerpt: "Trigeminal neuralgia can be managed effectively with the right treatment. Learn about the options available at pain clinics in Pune.",
+    category: "facial-pain",
+    date: d(13),
+    readTime: "7 min read",
+    keywords: ["trigeminal neuralgia treatment", "facial pain treatment", "best pain clinic Pune", "TN treatment Pune", "carbamazepine trigeminal", "nerve block facial pain"],
+  },
+  {
+    slug: "when-see-pain-specialist-facial-pain",
+    title: "When to See a Pain Specialist for Facial Pain",
+    metaDescription: "Learn when facial pain requires specialist treatment. Consult a pain specialist in Pune for proper diagnosis and relief.",
+    excerpt: "Facial pain can have many causes. Learn when it's important to see a pain specialist for proper evaluation and treatment.",
+    category: "facial-pain",
+    date: d(18),
+    readTime: "5 min read",
+    keywords: ["facial pain specialist", "pain specialist in Pune", "facial pain treatment", "face pain doctor near me", "chronic facial pain", "facial neuralgia"],
+  },
+
+  // ─── HEEL PAIN / PLANTAR FASCIITIS (4) ───
+  {
+    slug: "heel-pain-morning-what-it-means",
+    title: "Heel Pain in the Morning – What It Means",
+    metaDescription: "Experiencing heel pain when you first step out of bed? Learn why this happens and find treatment from a pain specialist in Pune.",
+    excerpt: "Morning heel pain is the most common symptom of plantar fasciitis. Learn what it means and when to seek professional help.",
+    category: "heel-pain",
+    date: d(2),
+    readTime: "5 min read",
+    keywords: ["heel pain morning", "plantar fasciitis", "pain specialist in Pune", "first step heel pain", "heel pain waking up", "morning foot pain"],
+  },
+  {
+    slug: "plantar-fasciitis-causes-treatment",
+    title: "Plantar Fasciitis – Causes and Treatment",
+    metaDescription: "Complete guide to plantar fasciitis including causes, symptoms, and treatment options available from a pain specialist in Pune.",
+    excerpt: "Plantar fasciitis is the most common cause of heel pain. Learn about its causes and the treatment options available in Pune.",
+    category: "heel-pain",
+    date: d(7),
+    readTime: "7 min read",
+    keywords: ["plantar fasciitis", "heel pain treatment", "pain specialist in Pune", "plantar fasciitis treatment Pune", "heel spur", "foot pain specialist Pune"],
+  },
+  {
+    slug: "exercises-heel-pain-relief",
+    title: "Best Exercises for Heel Pain Relief",
+    metaDescription: "Try these effective exercises for heel pain relief. Recommended by pain specialists in Pune for plantar fasciitis management.",
+    excerpt: "Stretching and strengthening exercises can significantly reduce heel pain. Here are the best exercises recommended by specialists.",
+    category: "heel-pain",
+    date: d(12),
+    readTime: "5 min read",
+    keywords: ["heel pain exercises", "plantar fasciitis exercises", "pain specialist in Pune", "calf stretches heel pain", "foot stretches", "arch strengthening exercises"],
+  },
+  {
+    slug: "when-see-doctor-heel-pain",
+    title: "When Should You See a Doctor for Heel Pain?",
+    metaDescription: "Know when heel pain needs medical attention. Consult a pain specialist in Pune if your heel pain persists or worsens.",
+    excerpt: "Persistent heel pain shouldn't be ignored. Learn the signs that indicate you need professional evaluation and treatment.",
+    category: "heel-pain",
+    date: d(17),
+    readTime: "5 min read",
+    keywords: ["heel pain doctor", "heel pain treatment", "pain specialist in Pune", "heel pain not going away", "chronic heel pain", "heel pain specialist near me"],
+  },
+
+  // ─── GENERAL PAIN SPECIALIST TOPICS (10) ───
+  {
+    slug: "pain-specialist-pune-when-should-you-visit",
+    title: "Pain Specialist in Pune – When Should You Visit One?",
+    metaDescription: "Learn when to visit a pain specialist in Pune. Comprehensive guide on pain management services and when specialist care is needed.",
+    excerpt: "A pain specialist can help when regular treatments fail. Learn when it's time to visit a pain specialist in Pune for expert care.",
+    category: "general-pain",
+    date: d(1),
+    readTime: "7 min read",
+    keywords: ["pain specialist in Pune", "when to see pain specialist", "best pain clinic Pune", "pain management Pune", "chronic pain doctor", "interventional pain specialist"],
+  },
+  {
+    slug: "what-does-pain-specialist-do",
+    title: "What Does a Pain Specialist Do?",
+    metaDescription: "Understand the role of a pain specialist – from diagnosis to advanced interventional treatments. Find expert care in Pune.",
+    excerpt: "Pain specialists are trained to diagnose and treat complex pain conditions. Learn what makes them different from regular doctors.",
+    category: "general-pain",
+    date: d(3),
+    readTime: "6 min read",
+    keywords: ["pain specialist", "pain specialist in Pune", "pain management", "what does pain doctor do", "pain medicine specialist", "interventional pain doctor"],
+  },
+  {
+    slug: "chronic-pain-causes-modern-treatment",
+    title: "Chronic Pain – Causes and Modern Treatment Options",
+    metaDescription: "Understand chronic pain causes and explore modern treatment options including interventional pain management available in Pune.",
+    excerpt: "Living with chronic pain is challenging. Discover the causes and the latest treatment options that offer real relief.",
+    category: "general-pain",
+    date: d(5),
+    readTime: "8 min read",
+    keywords: ["chronic pain treatment", "chronic pain doctor Pune", "pain specialist in Pune", "chronic pain causes", "modern pain treatment", "pain management options"],
+  },
+  {
+    slug: "interventional-pain-management-explained",
+    title: "Interventional Pain Management Explained",
+    metaDescription: "Learn how interventional pain management works – from nerve blocks to radiofrequency ablation. Available at pain clinics in Pune.",
+    excerpt: "Interventional pain management uses targeted procedures to treat pain at its source. Learn how these advanced techniques work.",
+    category: "general-pain",
+    date: d(7),
+    readTime: "8 min read",
+    keywords: ["interventional pain management", "nerve blocks", "best pain clinic Pune", "epidural injection", "radiofrequency ablation", "pain procedures Pune"],
+  },
+  {
+    slug: "when-pain-becomes-chronic-warning-signs",
+    title: "When Pain Becomes Chronic – Warning Signs",
+    metaDescription: "Know the warning signs that indicate your pain has become chronic. Seek early treatment from a pain specialist in Pune.",
+    excerpt: "Pain that lasts beyond the normal healing time may have become chronic. Recognize these warning signs early for better outcomes.",
+    category: "general-pain",
+    date: d(9),
+    readTime: "6 min read",
+    keywords: ["chronic pain signs", "chronic pain", "pain specialist in Pune", "acute vs chronic pain", "pain lasting months", "when pain becomes chronic"],
+  },
+  {
+    slug: "best-treatment-options-chronic-pain",
+    title: "Best Treatment Options for Chronic Pain",
+    metaDescription: "Explore the most effective chronic pain treatments available in Pune including medications, therapy, and interventional procedures.",
+    excerpt: "Chronic pain requires a multi-modal approach. Learn about the best treatment options recommended by pain specialists in Pune.",
+    category: "general-pain",
+    date: d(11),
+    readTime: "8 min read",
+    keywords: ["chronic pain treatment", "best pain clinic Pune", "chronic pain doctor Pune", "multimodal pain treatment", "pain management plan", "best chronic pain treatment"],
+  },
+  {
+    slug: "orthopedic-vs-pain-specialist-difference",
+    title: "Difference Between Orthopedic Doctor and Pain Specialist",
+    metaDescription: "Understand when to see an orthopedic doctor vs a pain specialist. Make the right choice for your pain condition in Pune.",
+    excerpt: "Orthopedic doctors and pain specialists have different approaches. Learn which one is right for your specific pain condition.",
+    category: "general-pain",
+    date: d(13),
+    readTime: "6 min read",
+    keywords: ["orthopedic vs pain specialist", "pain specialist in Pune", "chronic pain doctor Pune", "orthopedic or pain doctor", "which doctor for pain", "pain vs orthopedic"],
+  },
+  {
+    slug: "non-surgical-pain-treatments-explained",
+    title: "Non-Surgical Pain Treatments Explained",
+    metaDescription: "Learn about non-surgical pain treatments including injections, physiotherapy, and neuromodulation available at pain clinics in Pune.",
+    excerpt: "Surgery isn't the only option for pain relief. Discover the range of non-surgical treatments offered by pain specialists in Pune.",
+    category: "general-pain",
+    date: d(15),
+    readTime: "7 min read",
+    keywords: ["non-surgical pain treatment", "pain specialist in Pune", "best pain clinic Pune", "pain treatment without surgery", "minimally invasive pain", "injection therapy pain"],
+  },
+  {
+    slug: "how-pain-clinics-treat-chronic-conditions",
+    title: "How Pain Clinics Treat Chronic Pain Conditions",
+    metaDescription: "Take a look inside a pain clinic and learn how chronic pain conditions are diagnosed and treated by specialists in Pune.",
+    excerpt: "Ever wondered what happens at a pain clinic? Learn about the comprehensive approach pain specialists take to treat chronic conditions.",
+    category: "general-pain",
+    date: d(17),
+    readTime: "7 min read",
+    keywords: ["pain clinic", "chronic pain treatment", "best pain clinic Pune", "what happens at pain clinic", "pain clinic near me", "pain management center Pune"],
+  },
+  {
+    slug: "signs-you-need-pain-management-specialist",
+    title: "Signs You Need a Pain Management Specialist",
+    metaDescription: "Recognize the signs that you need a pain management specialist. Don't suffer in silence – find expert help in Pune.",
+    excerpt: "If your pain is affecting your daily life and regular treatments aren't helping, these signs indicate you need a specialist.",
+    category: "general-pain",
+    date: d(19),
+    readTime: "6 min read",
+    keywords: ["pain management specialist", "pain specialist in Pune", "chronic pain signs", "need pain doctor", "signs chronic pain", "when to get pain help"],
+  },
+
+  // ─── MIGRAINE AEO (4) ───
+  {
+    slug: "how-to-get-rid-of-migraine-fast",
+    title: "How to Get Rid of a Migraine Fast – What Actually Works",
+    metaDescription: "Learn fast-acting migraine relief methods including medications, pressure points, and practical tips from a migraine specialist in Pune.",
+    excerpt: "When a migraine hits, you need relief now. Here's what actually works for fast migraine relief, from medication to pressure points.",
+    category: "migraine",
+    date: d(21),
+    readTime: "7 min read",
+    keywords: ["migraine relief fast", "how to stop migraine", "migraine treatment Pune", "quick migraine cure", "migraine pressure points", "migraine medicine"],
+  },
+  {
+    slug: "what-causes-migraine-headaches",
+    title: "What Causes Migraine Headaches? A Complete Guide",
+    metaDescription: "Understand the real causes of migraine headaches including genetics, food triggers, hormones, and weather. Expert insights from Pune.",
+    excerpt: "Migraine isn't just a bad headache — it's a neurological event. Understand what causes it and how to manage your triggers.",
+    category: "migraine",
+    date: d(23),
+    readTime: "8 min read",
+    keywords: ["migraine causes", "what triggers migraine", "migraine food triggers", "hormonal migraine", "weather migraine", "migraine genetics"],
+  },
+  {
+    slug: "best-migraine-treatment-options-pune",
+    title: "Best Migraine Treatment Options in Pune",
+    metaDescription: "Explore the best migraine treatments available in Pune — from triptans and Botox to nerve blocks and CGRP inhibitors.",
+    excerpt: "A clear, evidence-based guide to migraine treatments available in Pune, from medications to the latest interventional procedures.",
+    category: "migraine",
+    date: d(25),
+    readTime: "8 min read",
+    keywords: ["migraine treatment Pune", "best migraine medicine", "Botox migraine Pune", "nerve block migraine", "CGRP migraine treatment", "migraine specialist Pune"],
+  },
+  {
+    slug: "migraine-during-pregnancy-safe-treatments",
+    title: "Migraine During Pregnancy – Safe Treatment Options",
+    metaDescription: "Managing migraines during pregnancy when most medications are off limits. Safe treatments and natural remedies from a specialist in Pune.",
+    excerpt: "Pregnancy changes everything about migraine management. Here are the safe treatment options when most medications are off the table.",
+    category: "migraine",
+    date: d(27),
+    readTime: "7 min read",
+    keywords: ["migraine pregnancy", "safe migraine treatment pregnancy", "migraine medicine pregnancy", "pregnancy headache", "migraine breastfeeding", "prenatal migraine"],
+  },
+
+  // ─── BACK PAIN AEO (4) ───
+  {
+    slug: "how-to-relieve-lower-back-pain-at-home",
+    title: "How to Relieve Lower Back Pain at Home – What Actually Works",
+    metaDescription: "Effective home remedies for lower back pain including ice vs heat, sleeping positions, exercises, and when to see a specialist in Pune.",
+    excerpt: "Your back seized up and you need relief now. Here's what actually works at home, from ice packs to sleeping positions.",
+    category: "back-pain",
+    date: d(22),
+    readTime: "8 min read",
+    keywords: ["lower back pain relief", "home remedies back pain", "back pain exercises", "ice or heat back pain", "sleeping position back pain", "back pain treatment home"],
+  },
+  {
+    slug: "what-causes-lower-back-pain-in-young-adults",
+    title: "What Causes Lower Back Pain in Young Adults?",
+    metaDescription: "Why young professionals in Pune are getting back pain earlier than ever. Causes include sitting, vitamin D deficiency, and stress.",
+    excerpt: "Back pain used to be a problem for the over-50s. Now twenty-somethings are filling our clinic. Here's why.",
+    category: "back-pain",
+    date: d(24),
+    readTime: "8 min read",
+    keywords: ["back pain young adults", "sitting back pain", "vitamin D back pain", "stress back pain", "back pain IT professionals", "back pain 25 years old"],
+  },
+  {
+    slug: "best-treatment-for-slip-disc-without-surgery",
+    title: "Best Treatment for Slip Disc Without Surgery",
+    metaDescription: "Most slip discs heal without surgery. Learn about epidural injections, physiotherapy, and latest non-surgical treatments in Pune.",
+    excerpt: "The diagnosis that scares everyone more than it should. Most disc herniations heal without surgery — here's how.",
+    category: "back-pain",
+    date: d(26),
+    readTime: "9 min read",
+    keywords: ["slip disc treatment without surgery", "herniated disc treatment", "epidural injection Pune", "non-surgical disc treatment", "slip disc recovery", "disc bulge treatment"],
+  },
+  {
+    slug: "how-to-sit-properly-to-avoid-back-pain",
+    title: "How to Sit Properly to Avoid Back Pain – Complete Ergonomic Guide",
+    metaDescription: "Correct sitting posture, desk setup, and break frequency to prevent back pain. Essential guide for IT professionals in Pune.",
+    excerpt: "The chair is not your enemy — how you use it is. A complete guide to sitting without destroying your back.",
+    category: "back-pain",
+    date: d(28),
+    readTime: "7 min read",
+    keywords: ["sitting posture back pain", "ergonomic desk setup", "correct sitting position", "office chair back pain", "standing desk back pain", "posture correction"],
+  },
+
+  // ─── SCIATICA AEO (4) ───
+  {
+    slug: "how-to-relieve-sciatica-pain-fast",
+    title: "How to Relieve Sciatica Pain Fast – What Works Immediately",
+    metaDescription: "Fast relief methods for sciatica pain including positioning, stretches, ice therapy, and medications. Expert advice from Pune.",
+    excerpt: "Sciatica pain is in a category of its own. Here's what actually provides fast relief when it strikes.",
+    category: "sciatica",
+    date: d(20),
+    readTime: "8 min read",
+    keywords: ["sciatica relief fast", "how to stop sciatica pain", "sciatica stretches", "sciatica treatment home", "sciatica ice or heat", "sciatica pain relief"],
+  },
+  {
+    slug: "what-causes-sciatica-and-who-gets-it",
+    title: "What Causes Sciatica and Who Gets It?",
+    metaDescription: "Understanding sciatica causes, risk factors, and prevention. Learn why IT professionals in Pune are particularly vulnerable.",
+    excerpt: "About 40 percent of people will experience sciatica. Understanding the causes and risk factors helps you prevent and manage it.",
+    category: "sciatica",
+    date: d(22),
+    readTime: "8 min read",
+    keywords: ["sciatica causes", "who gets sciatica", "sciatica risk factors", "sciatica prevention", "sciatica disc herniation", "piriformis syndrome"],
+  },
+  {
+    slug: "best-sleeping-position-for-sciatica-pain",
+    title: "Best Sleeping Position for Sciatica Pain",
+    metaDescription: "Find the best sleeping positions for sciatica relief. Tips on pillows, mattresses, and bedtime routines from a pain specialist in Pune.",
+    excerpt: "Sciatica gets worse at night for real physiological reasons. Here's how to sleep in a way that helps rather than hurts.",
+    category: "sciatica",
+    date: d(24),
+    readTime: "7 min read",
+    keywords: ["sleeping with sciatica", "sciatica sleeping position", "sciatica worse at night", "best mattress sciatica", "sciatica pillow", "sciatica sleep tips"],
+  },
+  {
+    slug: "sciatica-vs-piriformis-syndrome-difference",
+    title: "Sciatica vs Piriformis Syndrome – How to Tell the Difference",
+    metaDescription: "Learn the key differences between sciatica and piriformis syndrome. Accurate diagnosis leads to the right treatment in Pune.",
+    excerpt: "Two conditions, similar symptoms, very different treatments. Here's how to tell if your leg pain is spinal or muscular.",
+    category: "sciatica",
+    date: d(26),
+    readTime: "8 min read",
+    keywords: ["sciatica vs piriformis", "piriformis syndrome", "sciatica diagnosis", "buttock pain sciatica", "piriformis treatment", "sciatic nerve compression"],
+  },
+
+  // ─── NECK PAIN AEO (4) ───
+  {
+    slug: "how-to-relieve-neck-pain-fast",
+    title: "How to Relieve Neck Pain Fast – What Actually Works",
+    metaDescription: "Fast relief methods for neck pain including heat therapy, stretches, self-massage, and medication tips from a pain specialist in Pune.",
+    excerpt: "Your neck locked up and you need help now. Here's what actually provides fast relief, from heat therapy to the tennis ball technique.",
+    category: "neck-pain",
+    date: d(21),
+    readTime: "7 min read",
+    keywords: ["neck pain relief fast", "how to fix neck pain", "neck pain treatment home", "neck spasm relief", "stiff neck remedy", "neck pain Pune"],
+  },
+  {
+    slug: "what-causes-neck-pain-and-stiffness",
+    title: "What Causes Neck Pain and Stiffness? A Complete Guide",
+    metaDescription: "Understand the real causes of neck pain — from tech neck and cervical spondylosis to stress and disc problems. Expert insights from Pune.",
+    excerpt: "It's not just sleeping wrong. Understand the real reasons behind persistent neck pain and stiffness.",
+    category: "neck-pain",
+    date: d(23),
+    readTime: "8 min read",
+    keywords: ["neck pain causes", "tech neck", "cervical spondylosis", "neck stiffness causes", "forward head posture", "neck pain stress"],
+  },
+  {
+    slug: "best-exercises-for-neck-pain-relief",
+    title: "Best Exercises for Neck Pain Relief – A Specialist's Guide",
+    metaDescription: "Simple, effective exercises for neck pain including chin tucks, stretches, and shoulder blade squeezes. Takes less than 10 minutes daily.",
+    excerpt: "Simple exercises that take less than ten minutes but can transform your neck pain. A specialist's guide to moving out of pain.",
+    category: "neck-pain",
+    date: d(25),
+    readTime: "7 min read",
+    keywords: ["neck pain exercises", "chin tuck exercise", "neck stretches", "neck pain relief exercises", "cervical exercises", "neck strengthening"],
+  },
+  {
+    slug: "neck-pain-when-to-see-doctor",
+    title: "Neck Pain – When Should You See a Doctor?",
+    metaDescription: "Know when neck pain needs medical attention. Red flag symptoms, yellow flag signs, and what to expect at a specialist consultation in Pune.",
+    excerpt: "Most neck pain resolves on its own, but certain symptoms need prompt attention. Know the red and yellow flags.",
+    category: "neck-pain",
+    date: d(27),
+    readTime: "8 min read",
+    keywords: ["neck pain doctor", "when to see doctor neck pain", "neck pain red flags", "cervical myelopathy", "neck pain specialist Pune", "neck nerve compression"],
+  },
+
+  // ─── SHOULDER PAIN AEO (4) ───
+  {
+    slug: "how-to-relieve-shoulder-pain-at-home",
+    title: "How to Relieve Shoulder Pain at Home – What Actually Helps",
+    metaDescription: "Effective home remedies for shoulder pain including exercises, ice vs heat, stretches, and when to see a specialist in Pune.",
+    excerpt: "Your shoulder won't cooperate. Here's what you can do at home that actually helps — and what makes things worse.",
+    category: "shoulder-pain",
+    date: d(22),
+    readTime: "7 min read",
+    keywords: ["shoulder pain relief home", "shoulder pain exercises", "shoulder pain treatment", "rotator cuff home remedy", "shoulder stretches", "shoulder pain Pune"],
+  },
+  {
+    slug: "what-causes-shoulder-pain-without-injury",
+    title: "What Causes Shoulder Pain Without Injury?",
+    metaDescription: "Why your shoulder hurts even though you didn't injure it. Causes include rotator cuff wear, frozen shoulder, and referred pain from the neck.",
+    excerpt: "No fall, no accident — just pain that appeared and won't leave. Understanding shoulder pain that starts without an obvious cause.",
+    category: "shoulder-pain",
+    date: d(24),
+    readTime: "8 min read",
+    keywords: ["shoulder pain no injury", "rotator cuff tendinopathy", "frozen shoulder causes", "shoulder pain without trauma", "referred shoulder pain", "calcific tendinitis"],
+  },
+  {
+    slug: "frozen-shoulder-stages-treatment-guide",
+    title: "Frozen Shoulder – Stages, Symptoms, and Treatment Guide",
+    metaDescription: "Complete guide to frozen shoulder stages, symptoms, and treatment options including physiotherapy, injections, and surgery. Expert care in Pune.",
+    excerpt: "The condition that makes patients feel helpless. A clear guide to frozen shoulder stages and what can be done at each one.",
+    category: "shoulder-pain",
+    date: d(26),
+    readTime: "9 min read",
+    keywords: ["frozen shoulder treatment", "frozen shoulder stages", "adhesive capsulitis", "frozen shoulder exercises", "frozen shoulder Pune", "shoulder stiffness treatment"],
+  },
+  {
+    slug: "shoulder-pain-at-night-causes-solutions",
+    title: "Shoulder Pain at Night – Why It's Worse and What to Do",
+    metaDescription: "Why shoulder pain gets worse at night and how to sleep comfortably. Causes, sleeping positions, and treatment from a specialist in Pune.",
+    excerpt: "Manageable during the day, unbearable at night. Understanding why shoulder pain intensifies when you lie down.",
+    category: "shoulder-pain",
+    date: d(28),
+    readTime: "7 min read",
+    keywords: ["shoulder pain night", "shoulder pain sleeping", "rotator cuff night pain", "shoulder pain worse lying down", "sleeping position shoulder pain", "shoulder pain Pune"],
+  },
+
+  // ─── NERVE PAIN AEO (4) ───
+  {
+    slug: "what-does-nerve-pain-feel-like",
+    title: "What Does Nerve Pain Feel Like? Signs and Symptoms",
+    metaDescription: "Understand the unique sensations of nerve pain — burning, shooting, tingling, numbness. Learn how it differs from muscle or joint pain.",
+    excerpt: "Burning, electric, shooting — nerve pain doesn't feel like normal pain. Learn to recognise it and understand why it's different.",
+    category: "nerve-pain",
+    date: d(20),
+    readTime: "8 min read",
+    keywords: ["nerve pain symptoms", "what does nerve pain feel like", "neuropathic pain", "burning pain", "tingling numbness", "nerve pain treatment"],
+  },
+  {
+    slug: "how-to-treat-nerve-pain-naturally",
+    title: "How to Treat Nerve Pain Naturally – Evidence-Based Approaches",
+    metaDescription: "Natural and non-pharmaceutical treatments for nerve pain including exercise, diet, supplements, and nerve gliding exercises. Expert guide from Pune.",
+    excerpt: "Evidence-based, non-pharmaceutical approaches that genuinely help nerve pain — from exercise and diet to nerve gliding techniques.",
+    category: "nerve-pain",
+    date: d(22),
+    readTime: "8 min read",
+    keywords: ["nerve pain natural treatment", "nerve pain home remedies", "nerve gliding exercises", "B12 nerve pain", "alpha lipoic acid neuropathy", "natural neuropathy treatment"],
+  },
+  {
+    slug: "diabetic-neuropathy-symptoms-treatment-pune",
+    title: "Diabetic Neuropathy – Symptoms, Treatment, and Prevention",
+    metaDescription: "Comprehensive guide to diabetic neuropathy symptoms, treatment options, and foot care. Expert management available in Pune.",
+    excerpt: "The complication that creeps up silently. Half of all diabetics develop neuropathy — here's how to recognise, treat, and prevent it.",
+    category: "nerve-pain",
+    date: d(24),
+    readTime: "9 min read",
+    keywords: ["diabetic neuropathy", "diabetic nerve pain", "neuropathy treatment Pune", "diabetic foot care", "peripheral neuropathy", "diabetes nerve damage"],
+  },
+  {
+    slug: "pinched-nerve-symptoms-and-treatment",
+    title: "Pinched Nerve – Symptoms, Causes, and Treatment Options",
+    metaDescription: "Recognise pinched nerve symptoms in the neck, back, and wrist. Learn when it resolves on its own and when you need treatment in Pune.",
+    excerpt: "Sharp shooting pain, numbness in specific areas, weakness in certain muscles — the unmistakable signs of a pinched nerve.",
+    category: "nerve-pain",
+    date: d(26),
+    readTime: "8 min read",
+    keywords: ["pinched nerve symptoms", "pinched nerve treatment", "cervical radiculopathy", "carpal tunnel syndrome", "nerve compression", "pinched nerve Pune"],
+  },
+
+  // ─── FACIAL PAIN AEO (3) ───
+  {
+    slug: "what-causes-facial-pain-one-side",
+    title: "What Causes Facial Pain on One Side? A Specialist's Guide",
+    metaDescription: "Understand one-sided facial pain causes including trigeminal neuralgia, TMJ disorders, sinusitis, and dental problems. Expert care in Pune.",
+    excerpt: "One-sided facial pain is alarming and has many possible causes. A specialist breaks down the most common ones and how to tell them apart.",
+    category: "facial-pain",
+    date: d(21),
+    readTime: "8 min read",
+    keywords: ["facial pain one side", "trigeminal neuralgia", "TMJ pain", "facial pain causes", "face pain specialist Pune", "one sided face pain"],
+  },
+  {
+    slug: "trigeminal-neuralgia-treatment-options",
+    title: "Trigeminal Neuralgia Treatment Options – A Complete Guide",
+    metaDescription: "All treatment options for trigeminal neuralgia from medication to radiofrequency ablation and surgery. Expert pain management in Pune.",
+    excerpt: "From carbamazepine to radiofrequency ablation — a clear guide to every treatment option for trigeminal neuralgia.",
+    category: "facial-pain",
+    date: d(23),
+    readTime: "9 min read",
+    keywords: ["trigeminal neuralgia treatment", "facial nerve pain", "carbamazepine trigeminal", "radiofrequency ablation face", "trigeminal neuralgia Pune", "facial pain treatment"],
+  },
+  {
+    slug: "jaw-pain-tmj-causes-treatment",
+    title: "Jaw Pain and TMJ Disorders – Causes and Treatment",
+    metaDescription: "Complete guide to TMJ jaw pain — causes, symptoms, and treatments including night guards, exercises, and Botox. Expert care in Pune.",
+    excerpt: "Your jaw hurts when you eat, talk, and yawn. Understanding TMJ disorders and the treatments that actually work.",
+    category: "facial-pain",
+    date: d(25),
+    readTime: "8 min read",
+    keywords: ["TMJ treatment", "jaw pain causes", "TMJ disorder", "teeth grinding treatment", "jaw clicking pain", "TMJ specialist Pune"],
+  },
+
+  // ─── HEEL PAIN AEO (3) ───
+  {
+    slug: "what-causes-heel-pain-in-morning",
+    title: "What Causes Heel Pain in the Morning? Why First Steps Hurt",
+    metaDescription: "Understand why your heel hurts with the first steps out of bed. Causes, self-care tips, and when to see a specialist in Pune.",
+    excerpt: "Those agonising first steps every morning. Understanding why heel pain is worst when you get out of bed and what to do about it.",
+    category: "heel-pain",
+    date: d(22),
+    readTime: "7 min read",
+    keywords: ["heel pain morning", "first step heel pain", "plantar fasciitis morning", "heel pain causes", "heel pain treatment home", "heel pain Pune"],
+  },
+  {
+    slug: "plantar-fasciitis-treatment-complete-guide",
+    title: "Plantar Fasciitis Treatment – A Complete Guide",
+    metaDescription: "Everything about plantar fasciitis treatment from stretches and orthotics to shockwave therapy and PRP. Expert care available in Pune.",
+    excerpt: "The condition that ruins every step. A comprehensive guide to plantar fasciitis treatment — from self-care to advanced procedures.",
+    category: "heel-pain",
+    date: d(24),
+    readTime: "9 min read",
+    keywords: ["plantar fasciitis treatment", "heel pain treatment", "shockwave therapy heel", "PRP plantar fasciitis", "plantar fasciitis exercises", "heel pain specialist Pune"],
+  },
+  {
+    slug: "heel-pain-best-shoes-and-insoles",
+    title: "Best Shoes and Insoles for Heel Pain – A Specialist's Advice",
+    metaDescription: "Which shoes and insoles actually help heel pain? Expert advice on footwear, orthotics, and what to avoid for plantar fasciitis relief.",
+    excerpt: "Your shoes are part of the treatment. A specialist's guide to choosing the right footwear and insoles for heel pain.",
+    category: "heel-pain",
+    date: d(26),
+    readTime: "7 min read",
+    keywords: ["shoes for heel pain", "insoles plantar fasciitis", "best footwear heel pain", "orthotics heel pain", "heel pain shoes Pune", "plantar fasciitis insoles"],
+  },
+
+  // ─── GENERAL PAIN AEO (4) ───
+  {
+    slug: "how-to-manage-chronic-pain-daily",
+    title: "How to Manage Chronic Pain Daily – Practical Strategies",
+    metaDescription: "Practical daily strategies for chronic pain management including pacing, exercise, sleep, and stress management. Expert guidance from Pune.",
+    excerpt: "When pain becomes your daily companion, you need practical strategies — not motivational slogans. Here's what actually works.",
+    category: "general-pain",
+    date: d(20),
+    readTime: "9 min read",
+    keywords: ["chronic pain management", "daily pain management", "pacing chronic pain", "chronic pain exercise", "living with chronic pain", "pain management Pune"],
+  },
+  {
+    slug: "difference-between-acute-and-chronic-pain",
+    title: "Acute vs Chronic Pain – Understanding the Key Difference",
+    metaDescription: "Understand why chronic pain is fundamentally different from acute pain and why it needs different treatment. Expert insights from Pune.",
+    excerpt: "Chronic pain isn't just acute pain that lasted too long — it's a fundamentally different condition. Understanding this changes everything.",
+    category: "general-pain",
+    date: d(22),
+    readTime: "8 min read",
+    keywords: ["acute vs chronic pain", "chronic pain causes", "pain sensitisation", "central sensitisation", "chronic pain treatment", "pain specialist Pune"],
+  },
+  {
+    slug: "pain-management-without-surgery-pune",
+    title: "Pain Management Without Surgery – Your Options in Pune",
+    metaDescription: "Non-surgical pain treatments including nerve blocks, radiofrequency ablation, PRP, and epidural injections. Expert care in Pune.",
+    excerpt: "Surgery is not the only answer. Modern pain management offers targeted treatments between painkillers and the operating room.",
+    category: "general-pain",
+    date: d(24),
+    readTime: "9 min read",
+    keywords: ["pain management without surgery", "non-surgical pain treatment", "nerve block Pune", "radiofrequency ablation", "PRP therapy Pune", "interventional pain Pune"],
+  },
+  {
+    slug: "what-is-nerve-block-injection-for-pain",
+    title: "What Is a Nerve Block Injection? Everything You Need to Know",
+    metaDescription: "Complete guide to nerve block injections — types, procedure, safety, and effectiveness. Demystifying this powerful pain treatment in Pune.",
+    excerpt: "The procedure that surprises patients with how simple and effective it is. Everything you need to know about nerve block injections.",
+    category: "general-pain",
+    date: d(26),
+    readTime: "8 min read",
+    keywords: ["nerve block injection", "what is nerve block", "nerve block pain treatment", "nerve block Pune", "pain injection treatment", "nerve block procedure"],
+  },
+
+  // ─── NEW BLOGS: 2 PER CATEGORY (20 total) ───
+
+  // Migraine – New
+  {
+    slug: "migraine-and-weather-changes-pune",
+    title: "How Weather Changes in Pune Trigger Migraines",
+    metaDescription: "Learn how barometric pressure drops, monsoon onset, and temperature shifts in Pune trigger migraines and how to prevent weather-related attacks.",
+    excerpt: "Pune's dramatic seasonal shifts are a well-documented migraine trigger. Learn how weather affects your brain and what you can do about it.",
+    category: "migraine",
+    date: d(29),
+    readTime: "7 min read",
+    keywords: ["weather migraine", "barometric pressure migraine", "monsoon migraine Pune", "migraine triggers weather", "migraine prevention Pune", "seasonal migraine"],
+  },
+  {
+    slug: "botox-for-migraine-how-it-works",
+    title: "Botox for Migraine — How It Works and Who Should Consider It",
+    metaDescription: "Understand how Botox treats chronic migraine, who qualifies, what to expect during treatment, and results from a migraine specialist in Pune.",
+    excerpt: "Botox for migraine is not cosmetic. Learn how it works, who benefits, and what results you can expect from this evidence-based treatment.",
+    category: "migraine",
+    date: d(31),
+    readTime: "8 min read",
+    keywords: ["Botox migraine", "Botox for chronic migraine", "migraine treatment Pune", "Botox headache treatment", "migraine specialist Pune", "onabotulinumtoxinA migraine"],
+  },
+
+  // Back Pain – New
+  {
+    slug: "back-pain-during-pregnancy-safe-treatment",
+    title: "Back Pain During Pregnancy — Safe Treatment Options",
+    metaDescription: "Up to 70% of pregnant women get back pain. Learn safe treatment options including physiotherapy, exercises, and when to see a specialist in Pune.",
+    excerpt: "Pregnancy back pain is common but not inevitable. Learn safe, effective treatments that reduce pain without any risk to the baby.",
+    category: "back-pain",
+    date: d(30),
+    readTime: "7 min read",
+    keywords: ["pregnancy back pain", "back pain during pregnancy", "safe back pain treatment pregnancy", "prenatal back pain Pune", "pregnancy physiotherapy", "back pain specialist Pune"],
+  },
+  {
+    slug: "radiofrequency-ablation-for-back-pain",
+    title: "Radiofrequency Ablation for Back Pain — What to Expect",
+    metaDescription: "Learn how radiofrequency ablation treats chronic back pain by disabling pain-transmitting nerves. Minimally invasive procedure available in Pune.",
+    excerpt: "When medications are not enough for chronic back pain, RFA can break the cycle. Learn how this minimally invasive procedure works.",
+    category: "back-pain",
+    date: d(32),
+    readTime: "8 min read",
+    keywords: ["radiofrequency ablation back pain", "RFA treatment Pune", "chronic back pain treatment", "facet joint pain treatment", "minimally invasive back pain", "nerve ablation Pune"],
+  },
+
+  // Sciatica – New
+  {
+    slug: "sciatica-vs-piriformis-syndrome",
+    title: "Sciatica vs Piriformis Syndrome — How to Tell the Difference",
+    metaDescription: "Learn the key differences between sciatica and piriformis syndrome. Similar symptoms, different causes and treatments. Expert diagnosis in Pune.",
+    excerpt: "The pain feels the same, but the cause and treatment are different. Learn how to tell sciatica from piriformis syndrome.",
+    category: "sciatica",
+    date: d(28),
+    readTime: "7 min read",
+    keywords: ["sciatica vs piriformis", "piriformis syndrome", "sciatic nerve pain", "buttock pain diagnosis", "sciatica specialist Pune", "piriformis treatment Pune"],
+  },
+  {
+    slug: "yoga-for-sciatica-pain-relief",
+    title: "Yoga for Sciatica Pain Relief — Safe Poses and What to Avoid",
+    metaDescription: "Learn which yoga poses help sciatica and which can make it worse. Evidence-based guidance from a pain specialist in Pune.",
+    excerpt: "Yoga can help sciatica, but the wrong pose can make it worse. Learn which poses provide relief and which to avoid.",
+    category: "sciatica",
+    date: d(30),
+    readTime: "7 min read",
+    keywords: ["yoga for sciatica", "sciatica exercises", "sciatica stretches", "safe yoga poses sciatica", "sciatica relief yoga", "sciatica treatment Pune"],
+  },
+
+  // Neck Pain – New
+  {
+    slug: "cervical-spondylosis-treatment-without-surgery",
+    title: "Cervical Spondylosis Treatment Without Surgery",
+    metaDescription: "Most cervical spondylosis cases don't need surgery. Learn about physiotherapy, injections, and RFA treatments available in Pune.",
+    excerpt: "Over 85% of people over 60 have cervical spondylosis. Most cases are managed effectively without surgery. Learn how.",
+    category: "neck-pain",
+    date: d(29),
+    readTime: "8 min read",
+    keywords: ["cervical spondylosis treatment", "neck pain without surgery", "cervical spondylosis Pune", "neck pain specialist Pune", "non-surgical neck treatment", "cervical arthritis treatment"],
+  },
+  {
+    slug: "text-neck-syndrome-causes-treatment",
+    title: "Text Neck Syndrome — Causes, Symptoms, and Treatment",
+    metaDescription: "Text neck from smartphone use causes real spinal changes. Learn the causes, symptoms, and treatment from a neck pain specialist in Pune.",
+    excerpt: "Your phone is changing the shape of your spine. Learn about text neck syndrome and how to fix it before permanent damage occurs.",
+    category: "neck-pain",
+    date: d(31),
+    readTime: "7 min read",
+    keywords: ["text neck syndrome", "phone neck pain", "text neck treatment", "neck pain smartphone", "forward head posture", "text neck specialist Pune"],
+  },
+
+  // Knee Pain – New
+  {
+    slug: "knee-pain-climbing-stairs-causes",
+    title: "Knee Pain When Climbing Stairs — Causes and Treatment",
+    metaDescription: "Stairs put 3-4x your body weight on the knee. Learn what causes stair pain and effective treatments from a knee specialist in Pune.",
+    excerpt: "Going up and down stairs places enormous force on the knee joint. Learn why this causes pain and what you can do about it.",
+    category: "knee-pain",
+    date: d(28),
+    readTime: "7 min read",
+    keywords: ["knee pain stairs", "knee pain climbing stairs", "patellofemoral pain", "knee pain treatment Pune", "knee arthritis stairs", "knee specialist Pune"],
+  },
+  {
+    slug: "prp-therapy-for-knee-pain-pune",
+    title: "PRP Therapy for Knee Pain — Is It Worth It?",
+    metaDescription: "Honest assessment of PRP therapy for knee pain. How it works, who benefits, realistic expectations, and availability in Pune.",
+    excerpt: "PRP uses your own blood to heal your knee. Learn what it can and cannot do, and whether it is right for your condition.",
+    category: "knee-pain",
+    date: d(30),
+    readTime: "7 min read",
+    keywords: ["PRP therapy knee", "PRP injection knee Pune", "platelet rich plasma knee", "knee pain treatment Pune", "PRP knee arthritis", "regenerative treatment knee"],
+  },
+
+  // Shoulder Pain – New
+  {
+    slug: "frozen-shoulder-stages-recovery",
+    title: "Frozen Shoulder — Stages, Treatment, and Recovery Timeline",
+    metaDescription: "Understand frozen shoulder's three stages and treatments that speed recovery including injections, physiotherapy, and hydrodilatation in Pune.",
+    excerpt: "Frozen shoulder follows a predictable pattern through three stages. Understanding this helps you know what to expect and how to speed recovery.",
+    category: "shoulder-pain",
+    date: d(30),
+    readTime: "8 min read",
+    keywords: ["frozen shoulder stages", "adhesive capsulitis treatment", "frozen shoulder recovery", "frozen shoulder Pune", "hydrodilatation shoulder", "shoulder stiffness treatment"],
+  },
+  {
+    slug: "shoulder-pain-at-night-causes",
+    title: "Shoulder Pain at Night — Why It Happens and How to Fix It",
+    metaDescription: "Understand why shoulder pain worsens at night and learn sleeping positions, treatments, and when to see a specialist in Pune.",
+    excerpt: "Manageable during the day, unbearable at night. Learn why shoulder pain intensifies when you lie down and how to sleep better.",
+    category: "shoulder-pain",
+    date: d(32),
+    readTime: "7 min read",
+    keywords: ["shoulder pain night", "shoulder pain sleeping", "rotator cuff night pain", "sleeping position shoulder", "shoulder specialist Pune", "nighttime shoulder pain"],
+  },
+
+  // Nerve Pain – New
+  {
+    slug: "diabetic-neuropathy-treatment-pune",
+    title: "Diabetic Neuropathy — Nerve Pain Treatment in Pune",
+    metaDescription: "Effective treatments for diabetic neuropathy beyond sugar control. Medications, nerve blocks, and foot care from a pain specialist in Pune.",
+    excerpt: "Diabetic neuropathy affects up to 50% of diabetics. Blood sugar control alone isn't enough. Learn about effective pain treatments.",
+    category: "nerve-pain",
+    date: d(28),
+    readTime: "8 min read",
+    keywords: ["diabetic neuropathy treatment", "diabetic nerve pain Pune", "neuropathy pain management", "burning feet diabetes", "nerve pain specialist Pune", "peripheral neuropathy treatment"],
+  },
+  {
+    slug: "carpal-tunnel-syndrome-pain-management",
+    title: "Carpal Tunnel Syndrome — Symptoms and Pain Management",
+    metaDescription: "Recognise carpal tunnel symptoms early and learn non-surgical treatments including splinting, injections, and exercises. Expert care in Pune.",
+    excerpt: "Tingling fingers, weak grip, and wrist pain. Learn how carpal tunnel syndrome is managed without surgery in most cases.",
+    category: "nerve-pain",
+    date: d(30),
+    readTime: "7 min read",
+    keywords: ["carpal tunnel syndrome", "carpal tunnel treatment", "wrist pain numbness", "median nerve compression", "carpal tunnel Pune", "hand tingling treatment"],
+  },
+
+  // Facial Pain – New
+  {
+    slug: "tmj-pain-treatment-without-surgery",
+    title: "TMJ Pain — Non-Surgical Treatment Options",
+    metaDescription: "Most TMJ disorders resolve without surgery. Learn about bite splints, exercises, Botox, and trigger point therapy from a specialist in Pune.",
+    excerpt: "The jaw pain that affects eating, talking, and sleeping. Learn how TMJ disorders are treated effectively without surgery.",
+    category: "facial-pain",
+    date: d(27),
+    readTime: "7 min read",
+    keywords: ["TMJ treatment without surgery", "TMJ pain relief", "jaw pain treatment Pune", "teeth grinding treatment", "TMJ specialist Pune", "bite splint TMJ"],
+  },
+  {
+    slug: "trigeminal-neuralgia-treatment-pune",
+    title: "Trigeminal Neuralgia — Treatment Options in Pune",
+    metaDescription: "Complete guide to trigeminal neuralgia treatment from carbamazepine to radiofrequency ablation. Expert pain management in Pune.",
+    excerpt: "Called the most severe pain known to medicine. Learn about effective treatments that can give trigeminal neuralgia patients their life back.",
+    category: "facial-pain",
+    date: d(29),
+    readTime: "8 min read",
+    keywords: ["trigeminal neuralgia treatment Pune", "facial nerve pain treatment", "trigeminal neuralgia medicine", "radiofrequency ablation face", "facial pain specialist Pune", "electric shock face pain"],
+  },
+
+  // Heel Pain – New
+  {
+    slug: "plantar-fasciitis-treatment-pune",
+    title: "Plantar Fasciitis Treatment — Expert Guide from Pune",
+    metaDescription: "Complete guide to plantar fasciitis treatment including stretches, orthotics, shockwave therapy, and PRP from a heel pain specialist in Pune.",
+    excerpt: "That stabbing heel pain every morning is likely plantar fasciitis. Learn the most effective treatments from stretching to advanced procedures.",
+    category: "heel-pain",
+    date: d(28),
+    readTime: "8 min read",
+    keywords: ["plantar fasciitis treatment Pune", "heel pain treatment", "plantar fasciitis exercises", "shockwave therapy heel Pune", "heel pain specialist Pune", "plantar fascia stretches"],
+  },
+  {
+    slug: "achilles-tendon-pain-causes-treatment",
+    title: "Achilles Tendon Pain — Causes and Treatment",
+    metaDescription: "Learn about Achilles tendon pain causes, eccentric exercises, and advanced treatments including shockwave therapy and PRP available in Pune.",
+    excerpt: "The strongest tendon in your body has limits. Learn what causes Achilles pain and the gold-standard treatment approach.",
+    category: "heel-pain",
+    date: d(30),
+    readTime: "7 min read",
+    keywords: ["Achilles tendon pain", "Achilles tendinopathy", "Achilles treatment Pune", "eccentric calf exercises", "heel pain back of foot", "Achilles tendon specialist Pune"],
+  },
+
+  // General Pain – New
+  {
+    slug: "pain-management-for-elderly-pune",
+    title: "Pain Management for Elderly Patients in Pune",
+    metaDescription: "Safe, effective pain management for older adults considering medication interactions, organ function, and fall risk. Expert geriatric pain care in Pune.",
+    excerpt: "Pain management in elderly patients requires a careful, specialised approach. Learn about safe treatments that balance relief with safety.",
+    category: "general-pain",
+    date: d(28),
+    readTime: "8 min read",
+    keywords: ["elderly pain management", "geriatric pain treatment Pune", "safe painkillers elderly", "joint injection elderly", "pain management older adults", "pain specialist Pune"],
+  },
+  {
+    slug: "role-of-physiotherapy-in-chronic-pain",
+    title: "The Role of Physiotherapy in Chronic Pain Management",
+    metaDescription: "How modern physiotherapy treats chronic pain through targeted strengthening, manual therapy, and pain neuroscience education. Expert care in Pune.",
+    excerpt: "Physiotherapy is treatment, not just exercises. Learn how modern physiotherapy addresses the physical and neurological components of chronic pain.",
+    category: "general-pain",
+    date: d(30),
+    readTime: "7 min read",
+    keywords: ["physiotherapy chronic pain", "physiotherapy for pain management", "exercise for chronic pain", "pain neuroscience education", "physiotherapy Pune", "chronic pain rehabilitation"],
+  },
+];
+export const sampleBlogContent = {
+  slug: "migraine-vs-normal-headache-difference",
+  content: `
+## Understanding the Difference
+
+Almost every week, a patient sits across from us and says something like, "I've had these terrible headaches for years — is it a migraine or just stress?" It's one of the most common questions we get at our clinic in Pune. And honestly, it's one of the most important ones.
+
+Because the answer changes everything — the treatment, the prevention, and how seriously you need to take it.
+
+## What a Normal Headache Feels Like
+
+A tension-type headache — the "regular" kind — usually feels like a band squeezing around your head. It's a constant, dull ache that sits on both sides. Annoying? Absolutely. But you can still get through your day. You can still sit through a meeting or finish cooking dinner.
+
+Most of the time, these headaches come from stress, dehydration, bad posture (especially for anyone spending hours at a desk in Pune's IT parks), or poor sleep. A glass of water, some rest, or a basic painkiller usually does the trick.
+
+## What a Migraine Actually Feels Like
+
+A migraine is a completely different experience. We've had patients describe it as "someone hammering a nail into one side of my head" — and that's not an exaggeration.
+
+The pain is throbbing, pulsating, and typically concentrated on one side. But the pain is only part of it. What makes migraines truly different is everything that comes along with them: nausea that makes it impossible to eat, sensitivity to light so intense you need a dark room, sound sensitivity where even a normal conversation feels like shouting, and sometimes visual disturbances — zigzag lines, flashing lights, or blind spots — that appear before the pain even starts.
+
+A tension headache lasts thirty minutes to a few hours. A migraine attack? It can last anywhere from four hours to three full days. And unlike a regular headache, physical activity — even walking across the room — makes it worse.
+
+## How They Compare
+
+Think of it this way: a regular headache is uncomfortable. A migraine takes over your life.
+
+With a tension headache, you feel pressure on both sides of your head. With a migraine, the pain usually hits one side — throbbing, pulsating, impossible to ignore. A regular headache comes with very few other symptoms. A migraine brings nausea, light sensitivity, sometimes vomiting, and visual changes that can be genuinely frightening the first time they happen.
+
+The duration tells a story too. A tension headache resolves in a few hours at most. Migraines can stretch across entire days — we've had patients who've lost entire weekends to a single attack.
+
+And here's the most important difference: a regular headache is a nuisance. A migraine can be completely disabling. We've seen people lose jobs, miss their children's events, and slowly withdraw from the life they used to have — all because they thought they were "just getting bad headaches."
+
+## When It's Time to See a Specialist
+
+There's a pattern we see over and over at our clinic. Someone starts getting headaches in their twenties. They pop a painkiller and move on. By their thirties, the headaches are more frequent. The painkillers stop working as well. By the time they walk into our clinic, they've been suffering for years.
+
+You should seriously consider seeing a headache specialist in Pune if your headaches show up more than twice a week, if over-the-counter medication has stopped giving you relief, if nausea, vomiting, or visual changes accompany the pain, if the headaches are interfering with work, relationships, or sleep, or if you're reaching for painkillers more than two or three times a week.
+
+If even one of those sounds familiar, it's worth having a conversation with a specialist. Not to "confirm" something — but to actually understand what's happening and what can be done about it.
+
+[Consult a pain specialist in Pune](https://www.headacheandmigraineclinic.com/book-an-appointment/) for a thorough evaluation.
+
+## How We Treat Migraines Today
+
+The good news? Migraine treatment has come a long way. It's not just "take this pill and hope for the best" anymore.
+
+For patients who get frequent attacks, preventive medications taken daily can reduce how often migraines happen — sometimes dramatically. For active attacks, there are fast-acting treatments designed specifically for migraines (not generic painkillers, which often don't touch migraine pain).
+
+Botox injections have been a game-changer for patients with chronic migraines — those who get fifteen or more headache days a month. Nerve blocks provide targeted, quick relief by interrupting pain signals right at the source. And for many patients, identifying and avoiding personal triggers is just as powerful as any medication.
+
+The right approach depends on you — your frequency, your triggers, your lifestyle. That's why a one-size-fits-all approach doesn't work for migraines.
+
+## Simple Habits That Make a Real Difference
+
+Whether you're dealing with tension headaches or migraines, some basic habits can genuinely help. Stay properly hydrated — most people in Pune, especially during summer, don't drink nearly enough water. Keep a consistent sleep schedule, even on weekends. Find a way to manage stress that works for you — yoga, meditation, a walk in the park, whatever.
+
+If you work at a screen all day, follow the 20-20-20 rule: every twenty minutes, look at something twenty feet away for twenty seconds. Get some form of regular exercise — even thirty minutes of walking makes a measurable difference.
+
+And one thing we recommend to almost every patient: keep a headache diary. Write down when the headache started, what you ate, how you slept, what was going on at work. Patterns emerge surprisingly fast, and those patterns become your roadmap for prevention.
+
+## Common Questions We Hear
+
+### How do I know if my headache is a migraine?
+If the pain is throbbing, one-sided, comes with nausea or light sensitivity, and lasts for hours or days — it's very likely a migraine. But the only way to know for sure is a proper evaluation with a specialist who sees these cases every day.
+
+### Can tension headaches turn into migraines?
+Not directly — they're different conditions. But they can coexist. We see plenty of patients who get both, and managing each one properly is important.
+
+### What type of doctor treats migraines?
+A pain specialist or headache specialist. They have specialized training in diagnosing and treating headache disorders specifically — not just general neurology. In Pune, there are dedicated clinics focused entirely on this.
+
+### Is migraine curable?
+There's no permanent cure, but that's not the whole story. With the right treatment, many patients go from multiple attacks per week to one every few months — or even less. Effective management can genuinely give you your life back.
+
+### When should I go to the hospital for a headache?
+If it's the worst headache of your life, if it came on suddenly and severely, if it comes with fever and a stiff neck, if it follows a head injury, or if it comes with confusion, weakness, or vision loss — go to the emergency room. These could signal something serious that needs immediate attention.
+
+## Ready to Get Answers?
+
+If you've been wondering whether your headaches are "just headaches" or something more, a proper diagnosis can change everything. Many patients in Pune have found lasting relief simply by getting the right diagnosis and the right treatment plan.
+
+[Book your appointment with a pain specialist in Pune](https://www.painex.org/book-an-appointment/) — one conversation could be the turning point.
+`,
+};
