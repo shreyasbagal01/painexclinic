@@ -1,18 +1,46 @@
-User-agent: *
+# robots.txt for painspecialist.blog
+# Pain Management Blog by Painex Clinic, Pune
+
+# ─── SEARCH ENGINE CRAWLERS ───
+User-agent: Googlebot
 Allow: /
 
-User-agent: Googlebot
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# ─── AI / LLM CRAWLERS ───
 User-agent: GPTBot
 Allow: /
 Crawl-delay: 1
 
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
 Allow: /
 Crawl-delay: 1
 
@@ -23,6 +51,10 @@ Crawl-delay: 1
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+Crawl-delay: 1
+
 User-agent: CCBot
 Allow: /
 Crawl-delay: 1
@@ -31,4 +63,47 @@ User-agent: Bytespider
 Allow: /
 Crawl-delay: 2
 
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: cohere-ai
+Allow: /
+Crawl-delay: 2
+
+User-agent: AI2Bot
+Allow: /
+Crawl-delay: 2
+
+User-agent: omgili
+Allow: /
+Crawl-delay: 2
+
+# ─── SOCIAL MEDIA CRAWLERS ───
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# ─── DEFAULT RULE ───
+User-agent: *
+Allow: /
+Crawl-delay: 2
+
+# ─── BLOCKED PATHS ───
+Disallow: /assets/
+Disallow: /*.js$
+Disallow: /*.css$
+
+# ─── SITEMAPS ───
 Sitemap: https://www.painspecialist.blog/sitemap.xml
+
+# ─── LLMs.txt ───
+# For AI models: https://www.painspecialist.blog/llms.txt
