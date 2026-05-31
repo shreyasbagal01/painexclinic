@@ -385,6 +385,15 @@ const BlogPost = () => {
               {post.title}
             </h1>
 
+            {/* Quick Answer — direct AI-citable summary below H1 */}
+            <div
+              className="mt-5 rounded-xl border-l-4 border-primary bg-primary/5 px-5 py-4"
+              data-quick-answer
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1.5">Quick Answer</p>
+              <p className="text-base leading-relaxed text-foreground/90">{quickAnswer}</p>
+            </div>
+
             {/* Author Byline */}
             <div className="mt-4 flex items-center gap-3 rounded-lg border border-border bg-secondary/30 px-4 py-3">
               <Link
@@ -401,8 +410,29 @@ const BlogPost = () => {
                   <span className="text-xs text-muted-foreground">{author.credentialsDisplay}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Reviewed: {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+                  <span>Published: <time dateTime={post.date}>{publishedLabel}</time></span>
+                  <span className="mx-1.5">·</span>
+                  <span>Last updated: <time dateTime={post.date}>{publishedLabel}</time></span>
                 </p>
+              </div>
+            </div>
+
+            {/* Clinic credibility strip — fact-dense citables */}
+            <div className="mt-3 grid grid-cols-3 gap-2 rounded-lg border border-border bg-background px-3 py-2.5 text-center">
+              <div className="flex flex-col items-center gap-0.5">
+                <Award size={14} className="text-primary" />
+                <span className="text-xs font-bold text-foreground">25+ years</span>
+                <span className="text-[10px] text-muted-foreground leading-tight">clinical experience</span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5 border-x border-border">
+                <Users size={14} className="text-primary" />
+                <span className="text-xs font-bold text-foreground">21,000+</span>
+                <span className="text-[10px] text-muted-foreground leading-tight">patients treated</span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <ShieldCheck size={14} className="text-primary" />
+                <span className="text-xs font-bold text-foreground">9,000+</span>
+                <span className="text-[10px] text-muted-foreground leading-tight">surgeries avoided</span>
               </div>
             </div>
 
