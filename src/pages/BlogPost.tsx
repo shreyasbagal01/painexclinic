@@ -253,15 +253,45 @@ const BlogPost = () => {
     description: post.metaDescription,
     url: `https://www.painspecialist.blog/blog/${post.slug}`,
     specialty: "Pain Management",
+    datePublished: post.date,
+    dateModified: post.date,
     lastReviewed: post.date,
+    reviewedBy: getPersonJsonLd(author),
     author: getPersonJsonLd(author),
   };
 
-  const faqPageJsonLd = faqs.length >= 1
+  const medicalClinicJsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["MedicalClinic", "MedicalBusiness", "Organization"],
+    name: "Painex Pain Management Clinic",
+    url: "https://www.painspecialist.blog",
+    sameAs: ["https://www.painex.org", "https://www.instagram.com/the_painex_clinic/"],
+    medicalSpecialty: "Pain Management",
+    foundingDate: "2000",
+    description:
+      "Painex Clinic, Pune, is a fellowship-certified pain management practice with 25+ years of clinical experience, 21,000+ patients treated, and 9,000+ surgeries avoided through interventional pain procedures.",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "21000",
+      bestRating: "5",
+    },
+  };
+
+  // Combine explicit ### question FAQs with auto-derived H2-question FAQs.
+  const explicitFaqs = content ? extractFAQs(content) : [];
+  const autoFaqs = content ? autoFAQFromContent(content) : [];
+  const seen = new Set(explicitFaqs.map((f) => f.question.toLowerCase()));
+  const faqsCombined = [
+    ...explicitFaqs,
+    ...autoFaqs.filter((f) => !seen.has(f.question.toLowerCase())),
+  ].slice(0, 6);
+
+  const faqPageJsonLd = faqsCombined.length >= 1
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: faqs.map((faq) => ({
+        mainEntity: faqsCombined.map((faq) => ({
           "@type": "Question",
           name: faq.question,
           acceptedAnswer: {
@@ -271,6 +301,9 @@ const BlogPost = () => {
         })),
       }
     : null;
+
+  const quickAnswer = buildQuickAnswer(post.excerpt, post.title);
+  const publishedLabel = new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
 
   const categoryName = post.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
