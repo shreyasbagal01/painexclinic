@@ -522,6 +522,28 @@ const BlogPost = () => {
               </div>
             )}
 
+            {/* FAQ Section — visible mirror of FAQPage JSON-LD */}
+            {faqsCombined.length > 0 && (
+              <section className="mt-12 rounded-xl border border-border bg-secondary/20 p-5 md:p-7" aria-label="Frequently Asked Questions">
+                <div className="flex items-center gap-2 mb-5">
+                  <HelpCircle size={20} className="text-primary" />
+                  <h2 className="text-xl md:text-2xl font-bold text-foreground m-0">Frequently Asked Questions</h2>
+                </div>
+                <div className="space-y-5">
+                  {faqsCombined.map((faq, i) => (
+                    <div key={i}>
+                      <h3 className="text-base font-semibold text-foreground mb-2">{faq.question}</h3>
+                      <p
+                        className="text-sm text-foreground/80 leading-relaxed m-0"
+                        dangerouslySetInnerHTML={{ __html: formatInline(faq.answer) }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+
             {/* Medical Disclaimer */}
             <div className="mt-10">
               <MedicalDisclaimer />
