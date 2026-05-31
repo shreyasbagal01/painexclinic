@@ -218,7 +218,7 @@ const BlogPost = () => {
   const content = blogContents[post.slug] || (post.slug === sampleBlogContent.slug ? sampleBlogContent.content : null);
   const headings = content ? extractHeadings(content) : [];
   const heroImage = blogPostImages[post.slug] || categoryImages[post.category];
-  const faqs = content ? extractFAQs(content) : [];
+  
   const keyTakeaways = generateKeyTakeaways(headings, post.excerpt, post.category);
 
   const handleShare = () => {
