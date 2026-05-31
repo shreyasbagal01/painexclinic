@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { Calendar, Clock, Share2, ChevronRight, Lightbulb } from "lucide-react";
+import { Calendar, Clock, Share2, ChevronRight, Lightbulb, HelpCircle, Award, Users, ShieldCheck } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import CTABanner from "@/components/CTABanner";
@@ -11,6 +11,36 @@ import { blogContents } from "@/data/blogContents";
 import { categoryImages } from "@/data/categoryImages";
 import { blogPostImages } from "@/data/blogPostImages";
 import { getPostAuthor, getPersonJsonLd } from "@/data/authorData";
+
+/** Build a ~40-word "quick answer" sentence from the post excerpt + title. */
+const buildQuickAnswer = (excerpt: string, title: string): string => {
+  const base = excerpt.trim();
+  const words = base.split(/\s+/);
+  if (words.length >= 30 && words.length <= 55) return base;
+  if (words.length > 55) return words.slice(0, 45).join(" ") + "…";
+  // Pad short excerpts with a factual clinic line.
+  return `${base} This guide, written by fellowship-certified pain specialists (FIPM, FIAPM) at Painex Clinic, Pune, covers what causes the condition, evidence-based non-surgical treatments, recovery timelines, and when to consult a pain specialist.`;
+};
+
+/** Auto-derive an FAQ from H2 question headings + the first paragraph that follows. */
+const autoFAQFromContent = (md: string): { question: string; answer: string }[] => {
+  const lines = md.split("\n");
+  const out: { question: string; answer: string }[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^##\s+(.+\?)\s*$/);
+    if (!m) continue;
+    let j = i + 1;
+    while (j < lines.length && lines[j].trim() === "") j++;
+    let para = "";
+    while (j < lines.length && lines[j].trim() !== "" && !/^#/.test(lines[j])) {
+      para += (para ? " " : "") + lines[j].trim();
+      j++;
+    }
+    if (para) out.push({ question: m[1].trim(), answer: para });
+    if (out.length >= 5) break;
+  }
+  return out;
+};
 
 const renderMarkdown = (md: string) => {
   const lines = md.split("\n");
@@ -188,7 +218,7 @@ const BlogPost = () => {
   const content = blogContents[post.slug] || (post.slug === sampleBlogContent.slug ? sampleBlogContent.content : null);
   const headings = content ? extractHeadings(content) : [];
   const heroImage = blogPostImages[post.slug] || categoryImages[post.category];
-  const faqs = content ? extractFAQs(content) : [];
+  
   const keyTakeaways = generateKeyTakeaways(headings, post.excerpt, post.category);
 
   const handleShare = () => {
@@ -223,15 +253,45 @@ const BlogPost = () => {
     description: post.metaDescription,
     url: `https://www.painspecialist.blog/blog/${post.slug}`,
     specialty: "Pain Management",
+    datePublished: post.date,
+    dateModified: post.date,
     lastReviewed: post.date,
+    reviewedBy: getPersonJsonLd(author),
     author: getPersonJsonLd(author),
   };
 
-  const faqPageJsonLd = faqs.length >= 1
+  const medicalClinicJsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["MedicalClinic", "MedicalBusiness", "Organization"],
+    name: "Painex Pain Management Clinic",
+    url: "https://www.painspecialist.blog",
+    sameAs: ["https://www.painex.org", "https://www.instagram.com/the_painex_clinic/"],
+    medicalSpecialty: "Pain Management",
+    foundingDate: "2000",
+    description:
+      "Painex Clinic, Pune, is a fellowship-certified pain management practice with 25+ years of clinical experience, 21,000+ patients treated, and 9,000+ surgeries avoided through interventional pain procedures.",
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      reviewCount: "21000",
+      bestRating: "5",
+    },
+  };
+
+  // Combine explicit ### question FAQs with auto-derived H2-question FAQs.
+  const explicitFaqs = content ? extractFAQs(content) : [];
+  const autoFaqs = content ? autoFAQFromContent(content) : [];
+  const seen = new Set(explicitFaqs.map((f) => f.question.toLowerCase()));
+  const faqsCombined = [
+    ...explicitFaqs,
+    ...autoFaqs.filter((f) => !seen.has(f.question.toLowerCase())),
+  ].slice(0, 6);
+
+  const faqPageJsonLd = faqsCombined.length >= 1
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: faqs.map((faq) => ({
+        mainEntity: faqsCombined.map((faq) => ({
           "@type": "Question",
           name: faq.question,
           acceptedAnswer: {
@@ -241,6 +301,9 @@ const BlogPost = () => {
         })),
       }
     : null;
+
+  const quickAnswer = buildQuickAnswer(post.excerpt, post.title);
+  const publishedLabel = new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
 
   const categoryName = post.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
@@ -287,6 +350,7 @@ const BlogPost = () => {
         <meta name="author" content={author.name} />
         <script type="application/ld+json">{JSON.stringify(blogPostJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(medicalWebPageJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(medicalClinicJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(speakableJsonLd)}</script>
         {faqPageJsonLd && (
@@ -321,6 +385,15 @@ const BlogPost = () => {
               {post.title}
             </h1>
 
+            {/* Quick Answer — direct AI-citable summary below H1 */}
+            <div
+              className="mt-5 rounded-xl border-l-4 border-primary bg-primary/5 px-5 py-4"
+              data-quick-answer
+            >
+              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1.5">Quick Answer</p>
+              <p className="text-base leading-relaxed text-foreground/90">{quickAnswer}</p>
+            </div>
+
             {/* Author Byline */}
             <div className="mt-4 flex items-center gap-3 rounded-lg border border-border bg-secondary/30 px-4 py-3">
               <Link
@@ -337,8 +410,29 @@ const BlogPost = () => {
                   <span className="text-xs text-muted-foreground">{author.credentialsDisplay}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Reviewed: {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+                  <span>Published: <time dateTime={post.date}>{publishedLabel}</time></span>
+                  <span className="mx-1.5">·</span>
+                  <span>Last updated: <time dateTime={post.date}>{publishedLabel}</time></span>
                 </p>
+              </div>
+            </div>
+
+            {/* Clinic credibility strip — fact-dense citables */}
+            <div className="mt-3 grid grid-cols-3 gap-2 rounded-lg border border-border bg-background px-3 py-2.5 text-center">
+              <div className="flex flex-col items-center gap-0.5">
+                <Award size={14} className="text-primary" />
+                <span className="text-xs font-bold text-foreground">25+ years</span>
+                <span className="text-[10px] text-muted-foreground leading-tight">clinical experience</span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5 border-x border-border">
+                <Users size={14} className="text-primary" />
+                <span className="text-xs font-bold text-foreground">21,000+</span>
+                <span className="text-[10px] text-muted-foreground leading-tight">patients treated</span>
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <ShieldCheck size={14} className="text-primary" />
+                <span className="text-xs font-bold text-foreground">9,000+</span>
+                <span className="text-[10px] text-muted-foreground leading-tight">surgeries avoided</span>
               </div>
             </div>
 
@@ -427,6 +521,28 @@ const BlogPost = () => {
                 </a>
               </div>
             )}
+
+            {/* FAQ Section — visible mirror of FAQPage JSON-LD */}
+            {faqsCombined.length > 0 && (
+              <section className="mt-12 rounded-xl border border-border bg-secondary/20 p-5 md:p-7" aria-label="Frequently Asked Questions">
+                <div className="flex items-center gap-2 mb-5">
+                  <HelpCircle size={20} className="text-primary" />
+                  <h2 className="text-xl md:text-2xl font-bold text-foreground m-0">Frequently Asked Questions</h2>
+                </div>
+                <div className="space-y-5">
+                  {faqsCombined.map((faq, i) => (
+                    <div key={i}>
+                      <h3 className="text-base font-semibold text-foreground mb-2">{faq.question}</h3>
+                      <p
+                        className="text-sm text-foreground/80 leading-relaxed m-0"
+                        dangerouslySetInnerHTML={{ __html: formatInline(faq.answer) }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
 
             {/* Medical Disclaimer */}
             <div className="mt-10">
