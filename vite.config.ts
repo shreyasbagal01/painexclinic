@@ -10,6 +10,11 @@ import { authors, getPostAuthor, getPersonJsonLd } from "./src/data/authorData";
 import { locationPages } from "./src/data/locationData";
 
 const DOMAIN = "https://www.painspecialist.blog";
+const DEFAULT_OG_IMAGE = `${DOMAIN}/og-image.jpg`;
+const SAME_AS = [
+  "https://www.painex.org",
+  "https://www.instagram.com/the_painex_clinic/",
+];
 const TODAY = new Date().toISOString().split("T")[0];
 
 /* ── Simple markdown → HTML (headings, paragraphs, lists) ── */
@@ -99,7 +104,8 @@ function prerenderPlugin(): Plugin {
 
       function writePage(opts: PageOptions) {
         let html = template;
-        const { route, title, desc, canonical, bodyHtml, jsonLd, ogType, ogImage } = opts;
+        const { route, title, desc, canonical, bodyHtml, jsonLd, ogType } = opts;
+        const ogImage = opts.ogImage || DEFAULT_OG_IMAGE;
 
         // Replace <title>
         html = html.replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`);
@@ -123,20 +129,56 @@ function prerenderPlugin(): Plugin {
         html = html.replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${esc(title)}">`);
         html = html.replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${esc(desc)}">`);
         html = html.replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${esc(desc)}">`);
+        html = html.replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${ogImage}">`);
+        html = html.replace(/<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${ogImage}">`);
 
-        if (ogImage) {
-          html = html.replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${ogImage}">`);
-          html = html.replace(/<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${ogImage}">`);
+        // Build BreadcrumbList automatically from route segments
+        const breadcrumbItems: { name: string; url: string }[] = [
+          { name: "Home", url: `${DOMAIN}/` },
+        ];
+        if (route !== "/") {
+          const segs = route.slice(1).split("/");
+          const labelMap: Record<string, string> = {
+            blogs: "Blog",
+            blog: "Blog",
+            category: "Categories",
+            authors: "Authors",
+            conditions: "Conditions",
+            pune: "Pune Locations",
+          };
+          let acc = "";
+          segs.forEach((seg, i) => {
+            acc += `/${seg}`;
+            const name =
+              labelMap[seg] ||
+              seg.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+            breadcrumbItems.push({
+              name,
+              url: i === segs.length - 1 ? canonical : `${DOMAIN}${acc}`,
+            });
+          });
         }
+        const breadcrumbLd = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: breadcrumbItems.map((b, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: b.name,
+            item: b.url,
+          })),
+        };
 
         // Inject JSON-LD before </head>
+        const allLd: object[] = [breadcrumbLd];
         if (jsonLd) {
           const blocks = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
-          const scripts = blocks
-            .map((ld) => `<script type="application/ld+json">${JSON.stringify(ld)}</script>`)
-            .join("\n");
-          html = html.replace("</head>", `${scripts}\n</head>`);
+          allLd.push(...blocks);
         }
+        const scripts = allLd
+          .map((ld) => `<script type="application/ld+json">${JSON.stringify(ld)}</script>`)
+          .join("\n");
+        html = html.replace("</head>", `${scripts}\n</head>`);
 
         // Inject body content into #root
         html = html.replace(
@@ -194,7 +236,7 @@ function prerenderPlugin(): Plugin {
         jsonLd: [
           {
             "@context": "https://schema.org",
-            "@type": "MedicalBusiness",
+            "@type": ["MedicalClinic", "MedicalBusiness", "Organization"],
             name: "Painex Pain Management Clinic",
             url: DOMAIN,
             logo: `${DOMAIN}/favicon.png`,
@@ -209,7 +251,7 @@ function prerenderPlugin(): Plugin {
             },
             medicalSpecialty: "Pain Management",
             areaServed: "Pune",
-            sameAs: ["https://www.painex.org"],
+            sameAs: SAME_AS,
             member: authors.map((a) => ({
               "@type": "Person",
               name: a.name,
@@ -427,7 +469,7 @@ function prerenderPlugin(): Plugin {
       for (const loc of locationPages) {
         const locJsonLd = {
           "@context": "https://schema.org",
-          "@type": "MedicalBusiness",
+          "@type": ["MedicalClinic", "MedicalBusiness", "Organization"],
           name: "Painex Pain Management Clinic",
           url: DOMAIN,
           telephone: "+91-8390442266",
@@ -441,7 +483,7 @@ function prerenderPlugin(): Plugin {
           },
           areaServed: { "@type": "City", name: loc.area },
           medicalSpecialty: "Pain Management",
-          sameAs: ["https://www.painex.org"],
+          sameAs: SAME_AS,
         };
 
         const locHtml = md2html(loc.content);
@@ -511,7 +553,7 @@ export default defineConfig(() => ({
       },
     },
     cssCodeSplit: true,
-    minify: "terser",
+    minify: "terser" as const,
     terserOptions: {
       compress: {
         drop_console: true,
