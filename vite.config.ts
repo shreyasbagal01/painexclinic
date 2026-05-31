@@ -334,8 +334,15 @@ function prerenderPlugin(): Plugin {
         const content = blogContents[post.slug] || "";
         const author = getPostAuthor(post.slug, post.category);
         const contentHtml = md2html(content);
-        const faqs = extractFAQs(content);
+        const explicitFaqs = extractFAQs(content);
+        const autoFaqs = autoFAQFromContent(content);
+        const seen = new Set(explicitFaqs.map((f) => f.question.toLowerCase()));
+        const faqs = [
+          ...explicitFaqs,
+          ...autoFaqs.filter((f) => !seen.has(f.question.toLowerCase())),
+        ].slice(0, 6);
         const catName = categories.find((c) => c.slug === post.category)?.name || post.category;
+        const quickAnswer = buildQuickAnswer(post.excerpt);
 
         const jsonLdBlocks: object[] = [
           {
@@ -352,6 +359,12 @@ function prerenderPlugin(): Plugin {
               "@type": "Person",
               name: author.name,
               jobTitle: "Pain Management Specialist",
+              url: `${DOMAIN}/authors/${author.slug}`,
+            },
+            reviewedBy: {
+              "@type": "Person",
+              name: author.name,
+              jobTitle: author.jobTitle,
               url: `${DOMAIN}/authors/${author.slug}`,
             },
             publisher: {
@@ -384,6 +397,23 @@ function prerenderPlugin(): Plugin {
             },
             mainEntityOfPage: `${DOMAIN}/blog/${post.slug}`,
           },
+          {
+            "@context": "https://schema.org",
+            "@type": ["MedicalClinic", "MedicalBusiness", "Organization"],
+            name: "Painex Pain Management Clinic",
+            url: DOMAIN,
+            sameAs: SAME_AS,
+            medicalSpecialty: "Pain Management",
+            foundingDate: "2000",
+            description:
+              "Painex Clinic, Pune — fellowship-certified pain management practice with 25+ years of clinical experience, 21,000+ patients treated, and 9,000+ surgeries avoided through interventional pain procedures.",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "21000",
+              bestRating: "5",
+            },
+          },
         ];
 
         // FAQPage schema
@@ -396,22 +426,33 @@ function prerenderPlugin(): Plugin {
               name: faq.question,
               acceptedAnswer: {
                 "@type": "Answer",
-                text: faq.answer.replace(/\*\*/g, "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"),
+                text: stripMd(faq.answer),
               },
             })),
           });
         }
+
+        const faqHtml = faqs.length
+          ? `<section aria-label="Frequently Asked Questions"><h2>Frequently Asked Questions</h2>${faqs
+              .map(
+                (f) =>
+                  `<div><h3>${esc(f.question)}</h3><p>${esc(stripMd(f.answer))}</p></div>`
+              )
+              .join("")}</section>`
+          : "";
 
         writePage({
           route: `/blog/${post.slug}`,
           title: `${post.title.length > 50 ? post.title.slice(0, 50) + '…' : post.title} | Pain Specialist Blog`,
           desc: post.metaDescription,
           bodyHtml: `<article>
-            <h1>${post.title}</h1>
-            <p>Written by <a href="/authors/${author.slug}">${author.name}</a>, ${author.credentialsDisplay} | Medically Reviewed: ${post.date}</p>
-            <time datetime="${post.date}">${post.date}</time> · ${post.readTime}
-            <p><em>${post.excerpt}</em></p>
+            <h1>${esc(post.title)}</h1>
+            <aside data-quick-answer><p><strong>Quick Answer:</strong> ${esc(quickAnswer)}</p></aside>
+            <p>Written by <a href="/authors/${author.slug}">${author.name}</a>, ${author.credentialsDisplay}</p>
+            <p>Published: <time datetime="${post.date}">${post.date}</time> · Last updated: <time datetime="${post.date}">${post.date}</time> · ${post.readTime}</p>
+            <p>Painex Clinic, Pune — 25+ years of clinical experience · 21,000+ patients treated · 9,000+ surgeries avoided.</p>
             ${contentHtml}
+            ${faqHtml}
             <footer><p>Medically reviewed by <a href="/authors/${author.slug}">${author.name}</a> (${author.credentialsDisplay}), ${author.worksFor}.</p></footer>
           </article>`,
           canonical: `${DOMAIN}/blog/${post.slug}`,
