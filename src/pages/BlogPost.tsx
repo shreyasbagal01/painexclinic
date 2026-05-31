@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { Calendar, Clock, Share2, ChevronRight, Lightbulb } from "lucide-react";
+import { Calendar, Clock, Share2, ChevronRight, Lightbulb, HelpCircle, Award, Users, ShieldCheck } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import CTABanner from "@/components/CTABanner";
@@ -11,6 +11,36 @@ import { blogContents } from "@/data/blogContents";
 import { categoryImages } from "@/data/categoryImages";
 import { blogPostImages } from "@/data/blogPostImages";
 import { getPostAuthor, getPersonJsonLd } from "@/data/authorData";
+
+/** Build a ~40-word "quick answer" sentence from the post excerpt + title. */
+const buildQuickAnswer = (excerpt: string, title: string): string => {
+  const base = excerpt.trim();
+  const words = base.split(/\s+/);
+  if (words.length >= 30 && words.length <= 55) return base;
+  if (words.length > 55) return words.slice(0, 45).join(" ") + "…";
+  // Pad short excerpts with a factual clinic line.
+  return `${base} This guide, written by fellowship-certified pain specialists (FIPM, FIAPM) at Painex Clinic, Pune, covers what causes the condition, evidence-based non-surgical treatments, recovery timelines, and when to consult a pain specialist.`;
+};
+
+/** Auto-derive an FAQ from H2 question headings + the first paragraph that follows. */
+const autoFAQFromContent = (md: string): { question: string; answer: string }[] => {
+  const lines = md.split("\n");
+  const out: { question: string; answer: string }[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^##\s+(.+\?)\s*$/);
+    if (!m) continue;
+    let j = i + 1;
+    while (j < lines.length && lines[j].trim() === "") j++;
+    let para = "";
+    while (j < lines.length && lines[j].trim() !== "" && !/^#/.test(lines[j])) {
+      para += (para ? " " : "") + lines[j].trim();
+      j++;
+    }
+    if (para) out.push({ question: m[1].trim(), answer: para });
+    if (out.length >= 5) break;
+  }
+  return out;
+};
 
 const renderMarkdown = (md: string) => {
   const lines = md.split("\n");
