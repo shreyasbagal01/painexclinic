@@ -69,6 +69,40 @@ function extractFAQs(md: string): { question: string; answer: string }[] {
   return faqs;
 }
 
+/** Auto FAQ from "## Question?" headings + the first paragraph after. */
+function autoFAQFromContent(md: string): { question: string; answer: string }[] {
+  const lines = md.split("\n");
+  const out: { question: string; answer: string }[] = [];
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^##\s+(.+\?)\s*$/);
+    if (!m) continue;
+    let j = i + 1;
+    while (j < lines.length && lines[j].trim() === "") j++;
+    let para = "";
+    while (j < lines.length && lines[j].trim() !== "" && !/^#/.test(lines[j])) {
+      para += (para ? " " : "") + lines[j].trim();
+      j++;
+    }
+    if (para) out.push({ question: m[1].trim(), answer: para });
+    if (out.length >= 5) break;
+  }
+  return out;
+}
+
+/** Strip markdown formatting for plain-text contexts. */
+function stripMd(s: string): string {
+  return s.replace(/\*\*/g, "").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+}
+
+/** ~40-word quick answer from excerpt. */
+function buildQuickAnswer(excerpt: string): string {
+  const base = excerpt.trim();
+  const w = base.split(/\s+/);
+  if (w.length >= 30 && w.length <= 55) return base;
+  if (w.length > 55) return w.slice(0, 45).join(" ") + "…";
+  return `${base} This guide, written by fellowship-certified pain specialists (FIPM, FIAPM) at Painex Clinic, Pune, covers what causes the condition, evidence-based non-surgical treatments, recovery timelines, and when to consult a pain specialist.`;
+}
+
 /* ── Custom prerender plugin ── */
 function prerenderPlugin(): Plugin {
   return {
