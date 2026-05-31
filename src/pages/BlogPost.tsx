@@ -350,6 +350,7 @@ const BlogPost = () => {
         <meta name="author" content={author.name} />
         <script type="application/ld+json">{JSON.stringify(blogPostJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(medicalWebPageJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(medicalClinicJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(speakableJsonLd)}</script>
         {faqPageJsonLd && (
