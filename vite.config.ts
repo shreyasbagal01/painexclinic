@@ -236,7 +236,7 @@ function prerenderPlugin(): Plugin {
         jsonLd: [
           {
             "@context": "https://schema.org",
-            "@type": "MedicalBusiness",
+            "@type": ["MedicalClinic", "MedicalBusiness", "Organization"],
             name: "Painex Pain Management Clinic",
             url: DOMAIN,
             logo: `${DOMAIN}/favicon.png`,
@@ -251,7 +251,7 @@ function prerenderPlugin(): Plugin {
             },
             medicalSpecialty: "Pain Management",
             areaServed: "Pune",
-            sameAs: ["https://www.painex.org"],
+            sameAs: SAME_AS,
             member: authors.map((a) => ({
               "@type": "Person",
               name: a.name,
@@ -469,7 +469,7 @@ function prerenderPlugin(): Plugin {
       for (const loc of locationPages) {
         const locJsonLd = {
           "@context": "https://schema.org",
-          "@type": "MedicalBusiness",
+          "@type": ["MedicalClinic", "MedicalBusiness", "Organization"],
           name: "Painex Pain Management Clinic",
           url: DOMAIN,
           telephone: "+91-8390442266",
@@ -483,7 +483,7 @@ function prerenderPlugin(): Plugin {
           },
           areaServed: { "@type": "City", name: loc.area },
           medicalSpecialty: "Pain Management",
-          sameAs: ["https://www.painex.org"],
+          sameAs: SAME_AS,
         };
 
         const locHtml = md2html(loc.content);
