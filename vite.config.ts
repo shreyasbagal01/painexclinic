@@ -511,7 +511,7 @@ export default defineConfig(() => ({
       },
     },
     cssCodeSplit: true,
-    minify: "terser",
+    minify: "terser" as const,
     terserOptions: {
       compress: {
         drop_console: true,
